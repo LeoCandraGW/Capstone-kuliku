@@ -1,3 +1,4 @@
+import 'package:capstone_kuliku/presentation/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,14 +13,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+<<<<<<< HEAD
       home: const MyHomePage(title: 'Flutter Home Page'),
+=======
+      home: const SignUpPage(),
+>>>>>>> fc2d86608f1a1e8ff9fcb711ae577721a2fbd5ee
     );
   }
 }
 
+<<<<<<< HEAD
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
@@ -83,3 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+=======
+
+
+>>>>>>> fc2d86608f1a1e8ff9fcb711ae577721a2fbd5ee
