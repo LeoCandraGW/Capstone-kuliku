@@ -17,16 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-<<<<<<< HEAD
-      home: const MyHomePage(title: 'Flutter Home Page'),
-=======
       home: const SignUpPage(),
->>>>>>> fc2d86608f1a1e8ff9fcb711ae577721a2fbd5ee
     );
   }
 }
 
-<<<<<<< HEAD
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
@@ -90,7 +85,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-=======
-
-
->>>>>>> fc2d86608f1a1e8ff9fcb711ae577721a2fbd5ee
