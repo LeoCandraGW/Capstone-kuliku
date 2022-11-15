@@ -9,8 +9,9 @@ class SignUpPage extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           Expanded(
-            child: Image.asset(
-              'image/signup.jpg',
+            child: FadeInImage.assetNetwork(
+              placeholder: 'assets/loading.gif',
+              image: 'https://user-images.githubusercontent.com/43132191/201849962-5e36f5ef-f5b1-4f79-b470-55447296080f.jpg',
               fit: BoxFit.cover,
               height: double.infinity,
               width: double.infinity,
