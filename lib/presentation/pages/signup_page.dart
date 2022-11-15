@@ -1,3 +1,4 @@
+import 'package:capstone_kuliku/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -9,9 +10,8 @@ class SignUpPage extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           Expanded(
-            child: FadeInImage.assetNetwork(
-              placeholder: 'assets/loading.gif',
-              image: 'https://user-images.githubusercontent.com/43132191/201849962-5e36f5ef-f5b1-4f79-b470-55447296080f.jpg',
+            child: Image.asset(
+              'image/signup.jpg',
               fit: BoxFit.cover,
               height: double.infinity,
               width: double.infinity,
@@ -66,7 +66,9 @@ class SignUpPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(25),
                     ),
                   ),
-                  onPressed: (() {}),
+                  onPressed: (){
+                    Navigator.pushNamed(context, HomePage.routeName);
+                  },
                   child: const Text(
                     'Sign Up',
                     style: TextStyle(

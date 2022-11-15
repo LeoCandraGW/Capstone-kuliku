@@ -1,8 +1,8 @@
 import 'package:capstone_kuliku/presentation/provider/list_kuli.dart';
 import 'package:flutter/material.dart';
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class KuliCard extends StatelessWidget {
+  const KuliCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +23,7 @@ class MyWidget extends StatelessWidget {
                   bottom: 8,
                   right: 8,
                   ),
+                  width: double.infinity,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -31,13 +32,13 @@ class MyWidget extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(height: 16),
+                       const SizedBox(height: 16),
                       Text(
                         kuli.alamat,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Text(
                         kuli.skill,
                         maxLines: 1,
@@ -53,14 +54,19 @@ class MyWidget extends StatelessWidget {
                   bottom: 16,
                 ),
                 child: ClipRRect(
-                  child: Text('asdaw'),
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  child: Image.asset(
+                    kuli.imageAsset,
+                    width: 70,
+                  ),
                 ),
               ),
             ],
 
           ),
         );
-      }
+      },
+      itemCount: listKuliku.length,
       );
   }
 }

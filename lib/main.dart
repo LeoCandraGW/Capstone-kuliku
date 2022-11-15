@@ -1,3 +1,5 @@
+import 'package:capstone_kuliku/common/utils.dart';
+import 'package:capstone_kuliku/presentation/pages/home_page.dart';
 import 'package:capstone_kuliku/presentation/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +20,21 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const SignUpPage(),
+      navigatorObservers: [routeObserver],
+       onGenerateRoute: (RouteSettings settings){
+        switch(settings.name){
+          case HomePage.routeName:
+          return MaterialPageRoute(builder: (_)=> const HomePage());
+          default:
+              return MaterialPageRoute(builder: (_) {
+                return const Scaffold(
+                  body: Center(
+                    child: Text('Page not found :('),
+                  ),
+                );
+              });
+        }
+      },
     );
   }
 }
