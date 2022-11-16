@@ -14,8 +14,8 @@ class _HomePageState extends State<HomePage> {
   int _bottomNavIndex = 0;
   static const String _placeText = 'Place';
   final List<Widget>  _listWidget = [
-    const ListKuliPage(),
     const MainPage(),
+    const ListKuliPage(),
   ];
 
   final List<BottomNavigationBarItem> _bottomNavBarItems = [
@@ -40,7 +40,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: _listWidget[_bottomNavIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: const Color(0xFF342343),
+        backgroundColor: Color(0xff002f48),
+        selectedItemColor: const Color(0xFFdefbff),
         currentIndex: _bottomNavIndex,
         items: _bottomNavBarItems,
         onTap: _onBottomNavTapped,

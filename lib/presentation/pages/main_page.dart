@@ -82,10 +82,10 @@ class MainPage extends StatelessWidget {
                     return Container(
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                      decoration: const BoxDecoration(color: Colors.amber),
+                      decoration: const BoxDecoration(color: Color(0xFF002f48)),
                       child: Text(
                         'text $i',
-                        style: const TextStyle(fontSize: 16.0),
+                        style: const TextStyle(fontSize: 16.0, color: Colors.white),
                       ),
                     );
                   });
@@ -94,7 +94,7 @@ class MainPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Expanded(
+              child: SizedBox(
                 child: Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
@@ -113,7 +113,7 @@ class MainPage extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   final ListKuli kuli = listKuliku[index];
-                  return Expanded(
+                  return SizedBox(
                     child: InkWell(
                       onTap: () {},
                       child: Column(

@@ -18,7 +18,7 @@ class RegisterPage extends StatelessWidget {
                 width: 100,
                 height: 100,
                 child: Stack(children: <Widget>[
-                  Expanded(child: Image.asset('image/logo.png'))
+                  SizedBox(child: Image.asset('image/logo.png'))
                 ]),
               ),
             ),

@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 4.0),
-                child: Expanded(
+                child: SizedBox(
                   child: Stack(children: const <Widget>[
                     Positioned(
                       child: Text(
