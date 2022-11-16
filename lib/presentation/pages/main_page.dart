@@ -1,3 +1,4 @@
+import 'package:capstone_kuliku/presentation/provider/list_kuli.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -8,12 +9,17 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF002f48),
+      backgroundColor: const Color(0xFFDEFBFF),
       body: SafeArea(
         child: Column(
           children: <Widget>[
             Stack(
               children: <Widget>[
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 70,
+                  color: const Color(0xFF002f48),
+                ),
                 Row(
                   children: <Widget>[
                     Padding(
@@ -63,26 +69,77 @@ class MainPage extends StatelessWidget {
                 ),
               ],
             ),
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 150.0,
-                autoPlay: true,
-                autoPlayInterval: Duration(seconds: 5),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  height: 150.0,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 3),
                 ),
-              items: [1,2,3,4].map((i){
-                return Builder(
-                  builder: (BuildContext context){
+                items: [1, 2, 3, 4].map((i) {
+                  return Builder(builder: (BuildContext context) {
                     return Container(
                       width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.symmetric(horizontal: 5.0),
-                      decoration: BoxDecoration(
-                        color: Colors.amber
+                      margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                      decoration: const BoxDecoration(color: Colors.amber),
+                      child: Text(
+                        'text $i',
+                        style: const TextStyle(fontSize: 16.0),
                       ),
-                      child: Text('text $i', style: TextStyle(fontSize: 16.0),),
                     );
-                  }
+                  });
+                }).toList(),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Expanded(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    'Kuli Rekomendasi',
+                    style: TextStyle(
+                      color: Color(0xFF002f48),
+                      fontSize: 25,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 100,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  final ListKuli kuli = listKuliku[index];
+                  return Expanded(
+                    child: InkWell(
+                      onTap: () {},
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: SizedBox(
+                            height: 65,
+                            child: ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(28)),
+                            child: Image.asset(kuli.imageAsset),
+                          ),
+                          ),
+                            ),
+                          SizedBox(
+                            height: 25,
+                            child: Text(kuli.name),
+                          ),
+                        ],
+                      ),
+                    ),
                   );
-              }).toList(),
+                },
+                itemCount: listKuliku.length,
+              ),
             ),
           ],
         ),
