@@ -1,9 +1,9 @@
 import 'package:capstone_kuliku/presentation/widgets/kuli_card.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  static const routeName = '/homepage';
-  const HomePage({super.key});
+class ListKuliPage extends StatelessWidget {
+  static const routeName = '/listkulipage';
+  const ListKuliPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:capstone_kuliku/common/utils.dart';
 import 'package:capstone_kuliku/presentation/pages/home_page.dart';
+import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
 import 'package:capstone_kuliku/presentation/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
       navigatorObservers: [routeObserver],
        onGenerateRoute: (RouteSettings settings){
         switch(settings.name){
+          case ListKuliPage.routeName:
+          return MaterialPageRoute(builder: (_)=> const ListKuliPage());
           case HomePage.routeName:
           return MaterialPageRoute(builder: (_)=> const HomePage());
           default:

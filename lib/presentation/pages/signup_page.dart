@@ -1,4 +1,5 @@
 import 'package:capstone_kuliku/presentation/pages/home_page.dart';
+import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
