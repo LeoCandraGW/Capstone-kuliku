@@ -1,3 +1,4 @@
+import 'package:capstone_kuliku/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -7,7 +8,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 7, 7, 7),
+      backgroundColor: const Color(0xff002F48),
       body: Column(
         children: [
           Padding(
@@ -169,7 +170,9 @@ class RegisterPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(46),
                         ),
                       ),
-                      onPressed: (() {}),
+                      onPressed: () {
+                        Navigator.pushNamed(context, LoginPage.routeName);
+                      },
                       child: const Text(
                         'REGISTER',
                         style: TextStyle(

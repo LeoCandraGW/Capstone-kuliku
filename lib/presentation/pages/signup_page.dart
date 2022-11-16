@@ -1,5 +1,7 @@
 import 'package:capstone_kuliku/presentation/pages/home_page.dart';
 import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
+import 'package:capstone_kuliku/presentation/pages/login_page.dart';
+import 'package:capstone_kuliku/presentation/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -7,102 +9,139 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Expanded(
-            child: Image.asset(
-              'image/signup.jpg',
-              fit: BoxFit.cover,
-              height: double.infinity,
-              width: double.infinity,
-              alignment: Alignment.center,
+    return Expanded(
+      child: Scaffold(
+        body: Stack(
+          children: <Widget>[
+            Expanded(
+              child: Image.asset(
+                'image/signup.jpg',
+                fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+                alignment: Alignment.center,
+              ),
             ),
-          ),
-          Column(
-            children: <Widget>[
-              Container(
-                alignment: Alignment.topRight,
-                child: Image.asset(
-                  'image/logo.png',
-                  height: 135,
-                  width: 135,
-                ),
-              ),
-              Container(
-                alignment: Alignment.centerRight,
-                width: 319,
-                height: 182,
-                child: const Text(
-                  'Build Your Dream House And Make Over Your Room',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              Container(
-                alignment: Alignment.centerRight,
-                width: 319,
-                height: 64,
-                child: const Text(
-                  'find your best kuli and start your first brick with us!',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              Container(
-                width: 286,
-                height: 56,
-                margin: const EdgeInsets.only(top: 150),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: const Color(0xffBADCFF),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
+            Expanded(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.topRight,
+                    child: Image.asset(
+                      'image/logo.png',
+                      height: 135,
+                      width: 135,
                     ),
                   ),
-                  onPressed: (){
-                    Navigator.pushNamed(context, HomePage.routeName);
-                  },
-                  child: const Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      color: Color(0xff000000),
-                      fontSize: 24,
-                      fontWeight: FontWeight.normal,
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 50.0),
+                      child: Container(
+                        alignment: Alignment.topRight,
+                        width: 260,
+                        height: 182,
+                        child: const Text(
+                          'Build Your Dream House and Make Over Your Room',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontSize: 50,
+                            fontFamily: 'LeagueSpartan',
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
-                    Text(
-                      'already have account ?',
-                      style: TextStyle(
-                        color: Color(0xFFFFFFFF),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 70.0),
+                    child: Flexible(
+                      flex: 1,
+                      child: Container(
+                        alignment: Alignment.centerRight,
+                        width: 319,
+                        height: 64,
+                        child: const Expanded(
+                          child: Text(
+                            'find your best kuli and start your first brick with us!',
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                                fontSize: 24,
+                                fontFamily: 'LeagueSpartan',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
                       ),
                     ),
-                    Text(
-                      'Log In',
-                      style: TextStyle(
-                        color: Color(0xFF75B4FF),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 250.0),
+                    child: Flexible(
+                      flex: 1,
+                      child: SizedBox(
+                        width: 286,
+                        height: 60,
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: const Color(0xffBADCFF),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, RegisterPage.routeName);
+                          },
+                          child: const Expanded(
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                color: Color(0xff000000),
+                                fontSize: 24,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(left: 190.0),
+                            child: Expanded(
+                              child: Text(
+                                'already have account ?',
+                                style: TextStyle(
+                                  color: Color(0xFFFFFFFF),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              'Log In',
+                              style: TextStyle(
+                                color: Color(0xFF75B4FF),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                  ],
-                ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
