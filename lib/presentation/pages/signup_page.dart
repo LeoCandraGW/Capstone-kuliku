@@ -33,30 +33,28 @@ class SignUpPage extends StatelessWidget {
                       width: 135,
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 50.0),
-                      child: Container(
-                        alignment: Alignment.topRight,
-                        width: 260,
-                        height: 182,
-                        child: const Text(
-                          'Build Your Dream House and Make Over Your Room',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontSize: 50,
-                            fontFamily: 'LeagueSpartan',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 50.0, top: 20),
+                    child: Container(
+                      alignment: Alignment.topRight,
+                      width: 260,
+                      height: 182,
+                      child: const Text(
+                        'Build Your Dream House and Make Over Your Room',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontSize: 50,
+                          fontFamily: 'LeagueSpartan',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 70.0),
-                    child: Flexible(
-                      flex: 1,
+                  Flexible(
+                    flex: 0,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 90.0),
                       child: Container(
                         alignment: Alignment.centerRight,
                         width: 319,
@@ -76,12 +74,12 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 250.0),
+                    padding: const EdgeInsets.only(top: 200.0),
                     child: Flexible(
                       flex: 1,
                       child: SizedBox(
                         width: 286,
-                        height: 60,
+                        height: 50,
                         child: TextButton(
                           style: TextButton.styleFrom(
                             backgroundColor: const Color(0xffBADCFF),
@@ -115,22 +113,22 @@ class SignUpPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const <Widget>[
                           Padding(
-                            padding: EdgeInsets.only(left: 190.0),
-                            child: Expanded(
+                            padding: EdgeInsets.only(left: 90.0),
+                            child: Flexible(
+                              flex: 1,
                               child: Text(
                                 'already have account ?',
                                 style: TextStyle(
-                                  color: Color(0xFFFFFFFF),
-                                ),
+                                    color: Color(0xFFFFFFFF), fontSize: 17),
                               ),
                             ),
                           ),
-                          Expanded(
+                          Flexible(
+                            flex: 1,
                             child: Text(
-                              'Log In',
+                              ' Log In',
                               style: TextStyle(
-                                color: Color(0xFF75B4FF),
-                              ),
+                                  color: Color(0xFF75B4FF), fontSize: 17),
                             ),
                           ),
                         ],
