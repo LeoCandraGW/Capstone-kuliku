@@ -1,3 +1,4 @@
+import 'package:capstone_kuliku/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -10,39 +11,18 @@ class LoginPage extends StatelessWidget {
       backgroundColor: const Color(0xff002F48),
       body: Column(
         children: [
-          SizedBox(
+          Padding(padding: const EdgeInsets.only(top: 45),
+          
+          child: SizedBox(
             width: 420,
-            height: 218,
-            child: Stack(children: <Widget>[
-              Positioned(
-                  top: 0,
-                  left: 0,
-                  child: Container(
-                      width: 420,
-                      height: 218,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              'image/construction-silhouette.jpg',
-                            ),
-                            fit: BoxFit.cover),
-                      ))),
-              Positioned(
-                  top: 0,
-                  left: 1,
-                  child: Container(
-                      width: 420,
-                      height: 218,
-                      decoration: const BoxDecoration(
-                        color:
-                            Color.fromRGBO(186, 220, 255, 0.15000000596046448),
-                      ))),
-            ]),
+            height: 150,
+            child: Image.asset('image/logo.png'),
+          ),
           ),
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 85.0),
+                padding: const EdgeInsets.only(top: 4.0),
                 child: Expanded(
                   child: Stack(children: const <Widget>[
                     Positioned(
@@ -51,7 +31,7 @@ class LoginPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 46,
+                            fontSize: 30,
                             fontFamily: 'League Spartan',
                             fontWeight: FontWeight.bold),
                       ),
@@ -68,7 +48,7 @@ class LoginPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 16,
                           fontFamily: 'League Spartan'),
                     ),
                   ),
@@ -77,12 +57,12 @@ class LoginPage extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 90.0),
+            padding: const EdgeInsets.only(top: 60.0),
             child: Stack(
               children: <Widget>[
                 Container(
-                  width: 304,
-                  height: 60,
+                  width: 300,
+                  height: 45,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
@@ -108,8 +88,8 @@ class LoginPage extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Container(
-                  width: 304,
-                  height: 60,
+                  width: 300,
+                  height: 45,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
@@ -133,7 +113,7 @@ class LoginPage extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.only(
               top: 20.0,
-              left: 170,
+              left: 160,
             ),
             child: Text(
               'Forget Password ?',
@@ -141,7 +121,7 @@ class LoginPage extends StatelessWidget {
               style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'DM Sans',
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: FontWeight.normal,
                   height: 1),
             ),
@@ -157,7 +137,9 @@ class LoginPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(46),
                 ),
               ),
-              onPressed: (() {}),
+              onPressed: (() {
+                Navigator.pushNamed(context, HomePage.routeName);
+              }),
               child: const Text(
                 'LOGIN',
                 style: TextStyle(

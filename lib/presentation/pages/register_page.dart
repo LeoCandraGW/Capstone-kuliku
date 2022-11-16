@@ -1,3 +1,4 @@
+import 'package:capstone_kuliku/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -7,15 +8,15 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 7, 7, 7),
+      backgroundColor: const Color(0xFF002f48),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 30.0),
             child: Center(
               child: SizedBox(
-                width: 200,
-                height: 200,
+                width: 100,
+                height: 100,
                 child: Stack(children: <Widget>[
                   Expanded(child: Image.asset('image/logo.png'))
                 ]),
@@ -28,14 +29,14 @@ class RegisterPage extends StatelessWidget {
             style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'League Spartan',
-                fontSize: 46,
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
                 height: 1),
           ),
           const Padding(
             padding: EdgeInsets.all(16.0),
             child: SizedBox(
-              width: 240,
+              width: 300,
               height: 70,
               child: Text(
                 'Create your account and start your building with us ',
@@ -43,7 +44,7 @@ class RegisterPage extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'League Spartan',
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.w300,
                     height: 1),
               ),
@@ -54,8 +55,8 @@ class RegisterPage extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Container(
-                  width: 304,
-                  height: 60,
+                  width: 300,
+                  height: 45,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
@@ -81,8 +82,8 @@ class RegisterPage extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Container(
-                  width: 304,
-                  height: 60,
+                  width: 300,
+                  height: 45,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
@@ -109,8 +110,8 @@ class RegisterPage extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Container(
-                  width: 304,
-                  height: 60,
+                  width: 300,
+                  height: 45,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
@@ -136,8 +137,8 @@ class RegisterPage extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Container(
-                  width: 304,
-                  height: 60,
+                  width: 300,
+                  height: 45,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
@@ -159,7 +160,7 @@ class RegisterPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 40.0),
                   child: Container(
-                    width: 304,
+                    width: 300,
                     height: 56,
                     margin: const EdgeInsets.only(top: 100),
                     child: TextButton(
@@ -169,7 +170,9 @@ class RegisterPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(46),
                         ),
                       ),
-                      onPressed: (() {}),
+                      onPressed: (() {
+                        Navigator.pushNamed(context, HomePage.routeName);
+                      }),
                       child: const Text(
                         'REGISTER',
                         style: TextStyle(

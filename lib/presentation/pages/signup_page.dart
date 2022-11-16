@@ -1,5 +1,5 @@
-import 'package:capstone_kuliku/presentation/pages/home_page.dart';
-import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
+import 'package:capstone_kuliku/presentation/pages/login_page.dart';
+import 'package:capstone_kuliku/presentation/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -67,8 +67,8 @@ class SignUpPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(25),
                     ),
                   ),
-                  onPressed: (){
-                    Navigator.pushNamed(context, HomePage.routeName);
+                  onPressed: () {
+                    Navigator.pushNamed(context, RegisterPage.routeName);
                   },
                   child: const Text(
                     'Sign Up',
@@ -84,19 +84,24 @@ class SignUpPage extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
-                    Text(
+                  children: <Widget>[
+                    const Text(
                       'already have account ?',
                       style: TextStyle(
                         color: Color(0xFFFFFFFF),
                       ),
                     ),
-                    Text(
-                      'Log In',
-                      style: TextStyle(
-                        color: Color(0xFF75B4FF),
+                    InkWell(
+                      onTap: (() {
+                        Navigator.pushNamed(context, LoginPage.routeName);
+                      }),
+                      child: const Text(
+                        'Log In',
+                        style: TextStyle(
+                          color: Color(0xFF75B4FF),
+                        ),
                       ),
-                      ),
+                    ),
                   ],
                 ),
               ),

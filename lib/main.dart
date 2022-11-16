@@ -1,6 +1,9 @@
 import 'package:capstone_kuliku/common/utils.dart';
 import 'package:capstone_kuliku/presentation/pages/home_page.dart';
 import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
+import 'package:capstone_kuliku/presentation/pages/login_page.dart';
+import 'package:capstone_kuliku/presentation/pages/main_page.dart';
+import 'package:capstone_kuliku/presentation/pages/register_page.dart';
 import 'package:capstone_kuliku/presentation/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +31,12 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(builder: (_)=> const ListKuliPage());
           case HomePage.routeName:
           return MaterialPageRoute(builder: (_)=> const HomePage());
+          case LoginPage.routeName:
+          return MaterialPageRoute(builder: (_)=> const LoginPage());
+          case RegisterPage.routeName:
+          return MaterialPageRoute(builder: (_)=> const RegisterPage());
+          case MainPage.routeName:
+          return MaterialPageRoute(builder: (_)=> const MainPage());
           default:
               return MaterialPageRoute(builder: (_) {
                 return const Scaffold(

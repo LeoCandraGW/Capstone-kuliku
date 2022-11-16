@@ -1,5 +1,5 @@
 import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
-import 'package:capstone_kuliku/presentation/pages/signup_page.dart';
+import 'package:capstone_kuliku/presentation/pages/main_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   static const String _placeText = 'Place';
   final List<Widget>  _listWidget = [
     const ListKuliPage(),
-    const SignUpPage()
+    const MainPage(),
   ];
 
   final List<BottomNavigationBarItem> _bottomNavBarItems = [
