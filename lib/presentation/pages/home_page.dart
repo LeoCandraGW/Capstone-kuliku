@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: _listWidget[_bottomNavIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xff002f48),
+        backgroundColor: const Color(0xff002f48),
         selectedItemColor: const Color(0xFFdefbff),
         currentIndex: _bottomNavIndex,
         items: _bottomNavBarItems,

@@ -85,7 +85,8 @@ class MainPage extends StatelessWidget {
                       decoration: const BoxDecoration(color: Color(0xFF002f48)),
                       child: Text(
                         'text $i',
-                        style: const TextStyle(fontSize: 16.0, color: Colors.white),
+                        style: const TextStyle(
+                            fontSize: 16.0, color: Colors.white),
                       ),
                     );
                   });
@@ -121,14 +122,14 @@ class MainPage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 8, right: 8),
                             child: SizedBox(
-                            height: 65,
-                            child: ClipRRect(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(28)),
-                            child: Image.asset(kuli.imageAsset),
-                          ),
-                          ),
+                              height: 65,
+                              child: ClipRRect(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(28)),
+                                child: Image.asset(kuli.imageAsset),
+                              ),
                             ),
+                          ),
                           SizedBox(
                             height: 25,
                             child: Text(kuli.name),
@@ -141,9 +142,52 @@ class MainPage extends StatelessWidget {
                 itemCount: listKuliku.length,
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    'Apa Kebutuhanmu ? ',
+                    style: TextStyle(
+                      color: Color(0xFF002f48),
+                      fontSize: 25,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 240,
+              child: SkillGridView())
           ],
         ),
       ),
     );
   }
+}
+
+class SkillGridView extends StatelessWidget{
+  const SkillGridView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+      ),
+      itemCount: 300,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          width: 25,
+          height: 25,
+          child: Card(
+            color: Colors.amber,
+            child: Center(child: Text('$index')),
+          ),
+        );
+      }
+    );
+  }
+
 }

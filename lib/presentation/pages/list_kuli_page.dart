@@ -27,7 +27,7 @@ class ListKuliPage extends StatelessWidget {
             ),
           ],
         ),
-        backgroundColor: Color(0xff002f48),
+        backgroundColor: const Color(0xff002f48),
         ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
