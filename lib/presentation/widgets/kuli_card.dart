@@ -12,7 +12,9 @@ class KuliCard extends StatelessWidget {
         final ListKuli kuli = listKuliku[index];
         return InkWell(
           onTap: (() {
-            Navigator.pushNamed(context, DetailPage.routeName, arguments: kuli.id);
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return DetailPage(kuli: kuli);
+            }));
           }),
           child: Stack(
             alignment: Alignment.bottomLeft,

@@ -38,12 +38,6 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(builder: (_)=> const RegisterPage());
           case MainPage.routeName:
           return MaterialPageRoute(builder: (_)=> const MainPage());
-          case DetailPage.routeName:
-          final id = settings.arguments as int;
-          return MaterialPageRoute(
-            builder: (_)=> DetailPage(id: id),
-            settings: settings,
-          );
           default:
               return MaterialPageRoute(builder: (_) {
                 return const Scaffold(
