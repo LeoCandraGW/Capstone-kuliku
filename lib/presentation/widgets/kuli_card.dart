@@ -1,3 +1,4 @@
+import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
 import 'package:capstone_kuliku/presentation/provider/list_kuli.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class KuliCard extends StatelessWidget {
         final ListKuli kuli = listKuliku[index];
         return InkWell(
           onTap: (() {
-            
+            Navigator.pushNamed(context, DetailPage.routeName, arguments: kuli.id);
           }),
           child: Stack(
             alignment: Alignment.bottomLeft,

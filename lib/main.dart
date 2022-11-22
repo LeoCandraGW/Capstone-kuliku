@@ -1,4 +1,5 @@
 import 'package:capstone_kuliku/common/utils.dart';
+import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
 import 'package:capstone_kuliku/presentation/pages/home_page.dart';
 import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
 import 'package:capstone_kuliku/presentation/pages/login_page.dart';
@@ -37,6 +38,12 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(builder: (_)=> const RegisterPage());
           case MainPage.routeName:
           return MaterialPageRoute(builder: (_)=> const MainPage());
+          case DetailPage.routeName:
+          final id = settings.arguments as int;
+          return MaterialPageRoute(
+            builder: (_)=> DetailPage(id: id),
+            settings: settings,
+          );
           default:
               return MaterialPageRoute(builder: (_) {
                 return const Scaffold(
