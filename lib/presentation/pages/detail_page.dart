@@ -1,3 +1,4 @@
+import 'package:capstone_kuliku/presentation/pages/daftar_pesanan.dart';
 import 'package:capstone_kuliku/presentation/provider/list_kuli.dart';
 
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class DetailKuli extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CircleAvatar(
-                          backgroundColor: Color(0xFF42855B),
+                          backgroundColor: const Color(0xFF42855B),
                           child: IconButton(
                             icon: const Icon(
                               Icons.arrow_back,
@@ -71,8 +72,34 @@ class DetailKuli extends StatelessWidget {
                 children: <Widget>[
                   const Icon(Icons.monetization_on),
                   const SizedBox(height: 8.0),
-                  Text(kuli.dailysal),
+                  Text(kuli.dailysal.toString()),
                 ],
+              ),
+            ),
+            Container(
+              width: 304,
+              height: 56,
+              margin: const EdgeInsets.only(top: 100),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: const Color(0xff35516E),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(46),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+              return DaftarPesanan(kuli: kuli);
+            }));
+                },
+                child: const Text(
+                  'CheckOut',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'DM Sans'),
+                ),
               ),
             ),
           ],
@@ -97,7 +124,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
     return IconButton(
       icon: Icon(
         isFavorite ? Icons.star : Icons.star_border,
-        color: Color(0xFFD2D79F),
+        color: const Color(0xFFD2D79F),
       ),
       onPressed: () {
         setState(() {

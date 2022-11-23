@@ -157,7 +157,7 @@ class MainPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 240,
               child: SkillGridView())
           ],
@@ -178,7 +178,7 @@ class SkillGridView extends StatelessWidget{
       ),
       itemCount: 300,
       itemBuilder: (BuildContext context, int index) {
-        return Container(
+        return SizedBox(
           width: 25,
           height: 25,
           child: Card(

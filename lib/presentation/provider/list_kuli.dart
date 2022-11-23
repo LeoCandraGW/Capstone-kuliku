@@ -3,7 +3,7 @@ class ListKuli {
   String name;
   String alamat;
   String skill;
-  String dailysal;
+  int dailysal;
   String imageAsset;
   String deskripsi;
 
@@ -24,7 +24,7 @@ var listKuliku = [
       name: 'Maria',
       alamat: 'Surabaya, Jawa Timur',
       skill: 'Renovate, HomeCare',
-      dailysal: 'Rp. 165.000,00',
+      dailysal: 165000,
       imageAsset: 'image/kuliku1.png',
       deskripsi: 'Occaecat do qui occaecat voluptate cupidatat aliquip pariatur est velit. Elit sunt incididunt sint irure exercitation nostrud ex sunt. Et nulla tempor ut quis amet in.'),
   ListKuli(
@@ -32,7 +32,7 @@ var listKuliku = [
       name: 'Naruto',
       alamat: 'Bekasi, Jawa Barat',
       skill: 'Interior, Build, Yard',
-      dailysal: 'Rp. 155.000,00',
+      dailysal: 155000,
       imageAsset: 'image/kuliku2.png',
       deskripsi: 'Occaecat do qui occaecat voluptate cupidatat aliquip pariatur est velit. Elit sunt incididunt sint irure exercitation nostrud ex sunt. Et nulla tempor ut quis amet in.'),
   ListKuli(
@@ -40,7 +40,7 @@ var listKuliku = [
       name: 'Denji',
       alamat: 'Malang, Jawa Timur',
       skill: 'Interior, Room Makeover',
-      dailysal: 'Rp. 135.000,00',
+      dailysal: 135000,
       imageAsset: 'image/kuliku3.png',
       deskripsi: 'Occaecat do qui occaecat voluptate cupidatat aliquip pariatur est velit. Elit sunt incididunt sint irure exercitation nostrud ex sunt. Et nulla tempor ut quis amet in.'),
   ListKuli(
@@ -48,7 +48,7 @@ var listKuliku = [
       name: 'Emilia',
       alamat: 'Medan, Sumatra Utara',
       skill: 'Interior, HomeCare',
-      dailysal: 'Rp. 125.000,00',
+      dailysal: 125000,
       imageAsset: 'image/kuliku4.png',
       deskripsi: 'Occaecat do qui occaecat voluptate cupidatat aliquip pariatur est velit. Elit sunt incididunt sint irure exercitation nostrud ex sunt. Et nulla tempor ut quis amet in.'),
   ListKuli(
@@ -56,7 +56,7 @@ var listKuliku = [
       name: 'Hinata',
       alamat: 'Semarang, Jawa Tengah',
       skill: 'Yard, Build',
-      dailysal: 'Rp. 145.000,00',
+      dailysal: 145000,
       imageAsset: 'image/kuliku5.png',
       deskripsi: 'Occaecat do qui occaecat voluptate cupidatat aliquip pariatur est velit. Elit sunt incididunt sint irure exercitation nostrud ex sunt. Et nulla tempor ut quis amet in.'),
   ListKuli(
@@ -64,7 +64,7 @@ var listKuliku = [
       name: 'Makima',
       alamat: 'Tangerang, Banten',
       skill: 'Renovate, HomeCare',
-      dailysal: 'Rp. 165.000,00',
+      dailysal: 165000,
       imageAsset: 'image/kuliku6.png',
       deskripsi: 'Occaecat do qui occaecat voluptate cupidatat aliquip pariatur est velit. Elit sunt incididunt sint irure exercitation nostrud ex sunt. Et nulla tempor ut quis amet in.'),
 ];

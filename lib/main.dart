@@ -1,5 +1,4 @@
 import 'package:capstone_kuliku/common/utils.dart';
-import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
 import 'package:capstone_kuliku/presentation/pages/home_page.dart';
 import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
 import 'package:capstone_kuliku/presentation/pages/login_page.dart';
