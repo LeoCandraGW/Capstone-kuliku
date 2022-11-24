@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _bottomNavIndex = 0;
   static const String _placeText = 'Place';
-  final List<Widget>  _listWidget = [
+  final List<Widget> _listWidget = [
     const MainPage(),
     const ListKuliPage(),
   ];
@@ -37,17 +37,18 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _listWidget[_bottomNavIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xff002f48),
-        selectedItemColor: const Color(0xFFdefbff),
-        currentIndex: _bottomNavIndex,
-        items: _bottomNavBarItems,
-        onTap: _onBottomNavTapped,
+    return AspectRatio(
+      aspectRatio: 4 / 8.2,
+      child: Scaffold(
+        body: _listWidget[_bottomNavIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: const Color(0xff002f48),
+          selectedItemColor: const Color(0xFFdefbff),
+          currentIndex: _bottomNavIndex,
+          items: _bottomNavBarItems,
+          onTap: _onBottomNavTapped,
+        ),
       ),
     );
   }
-  
- 
 }

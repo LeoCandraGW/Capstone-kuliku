@@ -7,34 +7,34 @@ class ListKuliPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            const Center(
-              child: Text(
-              'Kuliku',
-            ),
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.search,
+    return AspectRatio(
+      aspectRatio: 4 / 8.2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              const Center(
+                child: Text(
+                  'Kuliku',
+                ),
               ),
-              onPressed: () {
-
-              },
-            ),
-          ],
+              IconButton(
+                icon: const Icon(
+                  Icons.search,
+                ),
+                onPressed: () {},
+              ),
+            ],
+          ),
+          backgroundColor: const Color(0xff002f48),
         ),
-        backgroundColor: const Color(0xff002f48),
-        ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints){
-          return const KuliCard();
-        }
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+            return const KuliCard();
+          }),
         ),
       ),
     );

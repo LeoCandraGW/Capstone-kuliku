@@ -28,10 +28,13 @@ class DetailPage extends StatelessWidget {
         ),
         backgroundColor: const Color(0xff002f48),
       ),
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constrains) {
-          return DetailKuli(kuli: kuli);
-        },
+      body: AspectRatio(
+        aspectRatio: 4 / 7.9,
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constrains) {
+            return DetailKuli(kuli: kuli);
+          },
+        ),
       ),
     );
   }
@@ -89,6 +92,12 @@ class DetailKuli extends StatelessWidget {
                           bottomRight: Radius.circular(8),
                         ),
                         color: Color(0xff9BB0B3),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black54,
+                              offset: Offset(0, 4),
+                              blurRadius: 4)
+                        ],
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,6 +139,12 @@ class DetailKuli extends StatelessWidget {
                       bottomRight: Radius.circular(8),
                     ),
                     color: Color(0xff9BB0B3),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black54,
+                          offset: Offset(0, 4),
+                          blurRadius: 4)
+                    ],
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(top: 10.0, left: 20),
@@ -158,6 +173,12 @@ class DetailKuli extends StatelessWidget {
                       bottomRight: Radius.circular(8),
                     ),
                     color: Color(0xff9BB0B3),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black54,
+                          offset: Offset(0, 4),
+                          blurRadius: 4)
+                    ],
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0, top: 10),
