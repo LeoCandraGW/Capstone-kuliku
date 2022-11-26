@@ -1,3 +1,4 @@
+import 'package:capstone_kuliku/presentation/pages/account_page.dart';
 import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
 import 'package:capstone_kuliku/presentation/pages/main_page.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +17,14 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _listWidget = [
     const MainPage(),
     const ListKuliPage(),
+    const AccountPage()
   ];
 
   final List<BottomNavigationBarItem> _bottomNavBarItems = [
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.public),
+      label: _placeText,
+    ),
     const BottomNavigationBarItem(
       icon: Icon(Icons.public),
       label: _placeText,

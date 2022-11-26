@@ -1,3 +1,4 @@
+import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
 import 'package:capstone_kuliku/presentation/provider/list_kuli.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -119,7 +120,12 @@ class MainPage extends StatelessWidget {
                     final ListKuli kuli = listKuliku[index];
                     return SizedBox(
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return DetailPage(kuli: kuli);
+                          }));
+                        },
                         child: Column(
                           children: <Widget>[
                             Padding(
