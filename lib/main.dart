@@ -1,4 +1,5 @@
 import 'package:capstone_kuliku/common/utils.dart';
+import 'package:capstone_kuliku/presentation/pages/account_page.dart';
 import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
 import 'package:capstone_kuliku/presentation/pages/home_page.dart';
 import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
@@ -26,31 +27,30 @@ class MyApp extends StatelessWidget {
       ),
       home: const SignUpPage(),
       navigatorObservers: [routeObserver],
-       onGenerateRoute: (RouteSettings settings){
-        switch(settings.name){
+      onGenerateRoute: (RouteSettings settings) {
+        switch (settings.name) {
           case ListKuliPage.routeName:
-          return MaterialPageRoute(builder: (_)=> const ListKuliPage());
+            return MaterialPageRoute(builder: (_) => const ListKuliPage());
           case HomePage.routeName:
-          return MaterialPageRoute(builder: (_)=> const HomePage());
+            return MaterialPageRoute(builder: (_) => const HomePage());
           case LoginPage.routeName:
-          return MaterialPageRoute(builder: (_)=> const LoginPage());
+            return MaterialPageRoute(builder: (_) => const LoginPage());
           case RegisterPage.routeName:
-          return MaterialPageRoute(builder: (_)=> const RegisterPage());
+            return MaterialPageRoute(builder: (_) => const RegisterPage());
+          case AccountPage.routeName:
+            return MaterialPageRoute(builder: (_) => const AccountPage());
           case MainPage.routeName:
-          return MaterialPageRoute(builder: (_)=> const MainPage());
+            return MaterialPageRoute(builder: (_) => const MainPage());
           default:
-              return MaterialPageRoute(builder: (_) {
-                return const Scaffold(
-                  body: Center(
-                    child: Text('Page not found :('),
-                  ),
-                );
-              });
+            return MaterialPageRoute(builder: (_) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('Page not found :('),
+                ),
+              );
+            });
         }
       },
     );
   }
 }
-
-
-

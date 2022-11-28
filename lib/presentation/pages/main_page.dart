@@ -134,7 +134,7 @@ class MainPage extends StatelessWidget {
                                 height: 75,
                                 child: ClipRRect(
                                   borderRadius: const BorderRadius.all(
-                                      Radius.circular(80)),
+                                      Radius.circular(400)),
                                   child: Image.asset(kuli.imageAsset),
                                 ),
                               ),
