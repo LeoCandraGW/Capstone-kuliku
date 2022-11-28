@@ -10,6 +10,7 @@ class KuliModel extends Equatable{
         required this.skill,
         required this.nohp,
         required this.dailysal,
+        required this.image,
         required this.deskripsi,
         required this.nik,
         required this.alamat,
@@ -22,6 +23,7 @@ class KuliModel extends Equatable{
     String skill;
     String nohp;
     String dailysal;
+    String image;
     String deskripsi;
     String nik;
     String alamat;
@@ -34,6 +36,7 @@ class KuliModel extends Equatable{
         skill: json["skill"],
         nohp: json["nohp"],
         dailysal: json["dailysal"],
+        image: json["image"],
         deskripsi: json["deskripsi"],
         nik: json["nik"],
         alamat: json["alamat"],
@@ -47,6 +50,7 @@ class KuliModel extends Equatable{
         "skill": skill,
         "nohp": nohp,
         "dailysal": dailysal,
+        "image": image,
         "deskripsi": deskripsi,
         "nik": nik,
         "alamat": alamat,
@@ -61,6 +65,7 @@ class KuliModel extends Equatable{
         skill: this.skill,
         nohp: this.nohp,
         dailysal: this.dailysal,
+        image: this.image,
         deskripsi: this.deskripsi,
         nik: this.nik,
         alamat: this.alamat,
@@ -76,6 +81,7 @@ class KuliModel extends Equatable{
         skill,
         nohp,
         dailysal,
+        image,
         deskripsi,
         nik,
         alamat

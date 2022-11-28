@@ -9,6 +9,7 @@ class Kuli extends Equatable {
     required this.skill,
     required this.nohp,
     required this.dailysal,
+    required this.image,
     required this.deskripsi,
     required this.nik,
     required this.alamat,
@@ -21,6 +22,7 @@ class Kuli extends Equatable {
   String skill;
   String nohp;
   String dailysal;
+  String image;
   String deskripsi;
   String nik;
   String alamat;
@@ -34,6 +36,7 @@ class Kuli extends Equatable {
         skill,
         nohp,
         dailysal,
+        image,
         deskripsi,
         nik,
         alamat,
