@@ -3,7 +3,7 @@ import 'package:capstone_kuliku/presentation/provider/list_kuli.dart';
 import 'package:flutter/material.dart';
 
 class KuliCard extends StatelessWidget {
-  const KuliCard({super.key});
+  const KuliCard(ListKuli kuli, {super.key});
 
   @override
   Widget build(BuildContext context) {
