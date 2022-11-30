@@ -15,17 +15,17 @@ class Kuli extends Equatable {
     required this.alamat,
   });
 
-  int id;
-  String username;
-  String email;
-  String password;
-  String skill;
-  String nohp;
-  String dailysal;
-  String image;
-  String deskripsi;
-  String nik;
-  String alamat;
+  final int id;
+  final String? username;
+  final String email;
+  final String password;
+  final String skill;
+  final String nohp;
+  final String dailysal;
+  final String image;
+  final String deskripsi;
+  final String nik;
+  final String alamat;
 
   @override
   List<Object?> get props => [

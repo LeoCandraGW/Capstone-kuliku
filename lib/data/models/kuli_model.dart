@@ -2,7 +2,7 @@ import 'package:capstone_kuliku/domain/entities/kuli.dart';
 import 'package:equatable/equatable.dart';
 
 class KuliModel extends Equatable{
-    KuliModel({
+    const KuliModel({
         required this.id,
         required this.username,
         required this.email,
@@ -16,17 +16,17 @@ class KuliModel extends Equatable{
         required this.alamat,
     });
 
-    int id;
-    String username;
-    String email;
-    String password;
-    String skill;
-    String nohp;
-    String dailysal;
-    String image;
-    String deskripsi;
-    String nik;
-    String alamat;
+    final int id;
+    final String? username;
+    final String email;
+    final String password;
+    final String skill;
+    final String nohp;
+    final String dailysal;
+    final String image;
+    final String deskripsi;
+    final String nik;
+    final String alamat;
 
     factory KuliModel.fromJson(Map<String, dynamic> json) => KuliModel(
         id: json["id"],
@@ -58,17 +58,17 @@ class KuliModel extends Equatable{
 
     Kuli toEntity() {
       return Kuli(
-        id: this.id,
-        username: this.username,
-        email: this.email,
-        password: this.password,
-        skill: this.skill,
-        nohp: this.nohp,
-        dailysal: this.dailysal,
-        image: this.image,
-        deskripsi: this.deskripsi,
-        nik: this.nik,
-        alamat: this.alamat,
+        id: id,
+        username: username,
+        email: email,
+        password: password,
+        skill: skill,
+        nohp: nohp,
+        dailysal: dailysal,
+        image: image,
+        deskripsi: deskripsi,
+        nik: nik,
+        alamat: alamat,
         );
     }
     

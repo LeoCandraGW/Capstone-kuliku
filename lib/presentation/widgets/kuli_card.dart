@@ -46,7 +46,7 @@ class KuliCard extends StatelessWidget {
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(8)),
                             child: Image.asset(
-                              kuli.image,
+                              kuli.image.toString(),
                               width: 80,
                             ),
                           ),
@@ -83,7 +83,7 @@ class KuliCard extends StatelessWidget {
                                         padding: const EdgeInsets.only(
                                             top: 0.0, left: 8),
                                         child: Text(
-                                          kuli.username,
+                                          kuli.username.toString(),
                                           style: const TextStyle(
                                               fontSize: 20.0,
                                               fontFamily: 'DM Sans'),
@@ -97,7 +97,7 @@ class KuliCard extends StatelessWidget {
                                         padding: const EdgeInsets.only(
                                             top: 4.0, left: 8),
                                         child: Text(
-                                          kuli.alamat,
+                                          kuli.alamat.toString(),
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                         ),
@@ -108,7 +108,7 @@ class KuliCard extends StatelessWidget {
                                         padding: const EdgeInsets.only(
                                             top: 6.0, left: 8),
                                         child: Text(
-                                          kuli.skill,
+                                          kuli.skill.toString(),
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                         ),
