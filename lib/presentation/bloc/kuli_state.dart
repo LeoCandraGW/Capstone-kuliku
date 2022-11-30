@@ -15,6 +15,9 @@ class KuliHasData extends KuliBlocState {
   final List<Kuli> kuli;
 
   const KuliHasData(this.kuli);
+
+  @override
+  List<Object> get props => [kuli];
 }
 
 class KuliHasError extends KuliBlocState {

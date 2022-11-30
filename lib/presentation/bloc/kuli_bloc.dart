@@ -9,11 +9,10 @@ part 'kuli_state.dart';
 class GetKuliListBloc extends Bloc<KuliBlocEvent, KuliBlocState> {
   final GetKuliList _getKuliList;
 
-  GetKuliListBloc(this._getKuliList) : super(KuliEmpty()) {
+  GetKuliListBloc(this._getKuliList) : super(KuliLoading()) {
     on<FetchKuliList>((event, emit) async {
       emit(KuliLoading());
       final result = await _getKuliList.execute();
-
       result.fold((failure) {
         emit(KuliHasError(failure.message));
       }, (kulidata) {

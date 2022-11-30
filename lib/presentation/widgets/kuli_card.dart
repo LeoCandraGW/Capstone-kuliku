@@ -46,7 +46,7 @@ class KuliCard extends StatelessWidget {
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(8)),
                             child: Image.asset(
-                              kuli.username,
+                              kuli.image,
                               width: 80,
                             ),
                           ),
@@ -83,7 +83,7 @@ class KuliCard extends StatelessWidget {
                                         padding: const EdgeInsets.only(
                                             top: 0.0, left: 8),
                                         child: Text(
-                                          kuli.alamat,
+                                          kuli.username,
                                           style: const TextStyle(
                                               fontSize: 20.0,
                                               fontFamily: 'DM Sans'),

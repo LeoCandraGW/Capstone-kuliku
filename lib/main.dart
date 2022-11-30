@@ -12,13 +12,11 @@ import 'package:capstone_kuliku/injection.dart' as di;
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  di.init();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(

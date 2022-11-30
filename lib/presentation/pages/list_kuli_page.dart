@@ -4,10 +4,22 @@ import 'package:capstone_kuliku/presentation/widgets/kuli_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ListKuliPage extends StatelessWidget {
+class ListKuliPage extends StatefulWidget {
   static const routeName = '/listkulipage';
   const ListKuliPage({super.key});
 
+  @override
+  State<ListKuliPage> createState() => _ListKuliPageState();
+}
+
+
+class _ListKuliPageState extends State<ListKuliPage> {
+
+  @override
+  void initState(){
+    super.initState();
+    Future.microtask(() => context.read<GetKuliListBloc>().add(FetchKuliList()));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
