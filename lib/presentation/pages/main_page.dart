@@ -1,10 +1,25 @@
+import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
+import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
 import 'package:capstone_kuliku/presentation/provider/list_kuli.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   static const routeName = "/mainpage";
   const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(
+        () => context.read<GetKuliListBloc>().add(FetchKuliList()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,39 +124,59 @@ class MainPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 100,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  final ListKuli kuli = listKuliku[index];
-                  return SizedBox(
-                    child: InkWell(
-                      onTap: () {},
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8, right: 8),
-                            child: SizedBox(
-                              height: 65,
-                              child: ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(28)),
-                                child: Image.asset(kuli.imageAsset),
-                              ),
+                height: 100,
+                child: BlocBuilder<GetKuliListBloc, KuliBlocState>(
+                    builder: (context, state) {
+                  if (state is KuliLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is KuliHasData) {
+                    return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final kuli = state.kuli[index];
+                        return SizedBox(
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                DetailPage.routeName,
+                                arguments: kuli.id,
+                              );
+                            },
+                            child: Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 8, right: 8),
+                                  child: SizedBox(
+                                    height: 65,
+                                    child: ClipRRect(
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(28)),
+                                      child: Image.asset(kuli.image),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 25,
+                                  child: Text(kuli.username.toString()),
+                                ),
+                              ],
                             ),
                           ),
-                          SizedBox(
-                            height: 25,
-                            child: Text(kuli.name),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-                itemCount: listKuliku.length,
-              ),
-            ),
+                        );
+                      },
+                      itemCount: state.kuli.length,
+                    );
+                  } else if (state is KuliHasError) {
+                    return Center(
+                      key: const Key('error_message'),
+                      child: Text(state.message),
+                    );
+                  } else {
+                    return const Text('No Data');
+                  }
+                })),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
@@ -157,9 +192,7 @@ class MainPage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 240,
-              child: SkillGridView())
+            const SizedBox(height: 240, child: SkillGridView())
           ],
         ),
       ),
@@ -167,27 +200,25 @@ class MainPage extends StatelessWidget {
   }
 }
 
-class SkillGridView extends StatelessWidget{
+class SkillGridView extends StatelessWidget {
   const SkillGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-      ),
-      itemCount: 300,
-      itemBuilder: (BuildContext context, int index) {
-        return SizedBox(
-          width: 25,
-          height: 25,
-          child: Card(
-            color: Colors.amber,
-            child: Center(child: Text('$index')),
-          ),
-        );
-      }
-    );
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+        ),
+        itemCount: 300,
+        itemBuilder: (BuildContext context, int index) {
+          return SizedBox(
+            width: 25,
+            height: 25,
+            child: Card(
+              color: Colors.amber,
+              child: Center(child: Text('$index')),
+            ),
+          );
+        });
   }
-
 }

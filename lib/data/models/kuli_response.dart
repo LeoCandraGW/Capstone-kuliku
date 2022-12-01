@@ -7,13 +7,13 @@ class KuliResponse extends Equatable {
   KuliResponse({required this.kuliList});
 
   factory KuliResponse.fromJson(Map<String, dynamic> json) => KuliResponse(
-        kuliList: List<KuliModel>.from((json["result"] ?? [] as List)
+        kuliList: List<KuliModel>.from((json["data"]as List)
             .map((x) => KuliModel.fromJson(x))
             .where((element) => element.username != null)),
       );
 
   Map<String, dynamic> toJson() => {
-        "result": List<dynamic>.from(kuliList.map((x) => x.toJson)),
+        "data": List<dynamic>.from(kuliList.map((x) => x.toJson)),
       };
 
   @override

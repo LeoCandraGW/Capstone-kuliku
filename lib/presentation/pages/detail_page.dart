@@ -1,46 +1,62 @@
+import 'package:capstone_kuliku/data/models/kuli_model.dart';
+import 'package:capstone_kuliku/domain/entities/kuli.dart';
+import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
 import 'package:capstone_kuliku/presentation/provider/list_kuli.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'daftar_pesanan.dart';
 
 class DetailPage extends StatelessWidget {
-  final ListKuli kuli;
-  const DetailPage({Key? key, required this.kuli}) : super(key: key);
+  static const routeName = '/detailpage';
+  final int id;
+  const DetailPage({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            const Center(
-              child: Text(
-                'Detail',
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              const Center(
+                child: Text(
+                  'Detail',
+                ),
               ),
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.search,
+              IconButton(
+                icon: const Icon(
+                  Icons.search,
+                ),
+                onPressed: () {},
               ),
-              onPressed: () {},
-            ),
-          ],
+            ],
+          ),
+          backgroundColor: const Color(0xff002f48),
         ),
-        backgroundColor: const Color(0xff002f48),
-      ),
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constrains) {
-          return DetailKuli(kuli: kuli);
-        },
-      ),
-    );
+        body: BlocBuilder<GetKuliListBloc, KuliBlocState>(
+            builder: (context, state) {
+          if (state is KuliLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is KuliHasData) {
+            return SafeArea(
+              child: DetailKuli(kuli :state.kuli[id-1]),
+            );
+          } else if (state is KuliHasError) {
+            return Center(
+              key: const Key('error_message'),
+              child: Text(state.message),
+            );
+          } else {
+            return const Text('No Data');
+          }
+        }));
   }
 }
 
 class DetailKuli extends StatelessWidget {
-  final ListKuli kuli;
+  final Kuli kuli;
   const DetailKuli({Key? key, required this.kuli}) : super(key: key);
 
   @override
@@ -71,7 +87,7 @@ class DetailKuli extends StatelessWidget {
                     ],
                   ),
                   child: Image.asset(
-                    kuli.imageAsset,
+                    kuli.image,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -98,7 +114,7 @@ class DetailKuli extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 18.0, left: 20),
                             child: Text(
-                              kuli.name,
+                              kuli.username.toString(),
                               style: const TextStyle(
                                   fontSize: 20.0, fontFamily: 'DM Sans'),
                             ),
@@ -240,10 +256,8 @@ class DetailKuli extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context){
-              return DaftarPesanan(kuli: kuli);
-            }));
-                },
+                    
+                  },
                   child: const Text(
                     'CHECKOUT',
                     style: TextStyle(
