@@ -1,4 +1,3 @@
-import 'package:capstone_kuliku/domain/usecases/get_kuli_list.dart';
 import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
 import 'package:capstone_kuliku/presentation/widgets/kuli_card.dart';
 import 'package:flutter/material.dart';

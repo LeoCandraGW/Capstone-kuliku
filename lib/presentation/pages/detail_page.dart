@@ -1,12 +1,9 @@
-import 'package:capstone_kuliku/data/models/kuli_model.dart';
 import 'package:capstone_kuliku/domain/entities/kuli.dart';
 import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
-import 'package:capstone_kuliku/presentation/provider/list_kuli.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'daftar_pesanan.dart';
 
 class DetailPage extends StatelessWidget {
   static const routeName = '/detailpage';

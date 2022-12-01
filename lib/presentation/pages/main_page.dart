@@ -1,6 +1,5 @@
 import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
 import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
-import 'package:capstone_kuliku/presentation/provider/list_kuli.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
