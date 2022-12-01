@@ -41,8 +41,8 @@ class MainPage extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            constraints: const BoxConstraints(
-                                maxHeight: 300, maxWidth: 40),
+                            constraints:
+                                BoxConstraints.loose(const Size(300, 400)),
                             child: const TextField(
                               decoration: InputDecoration(
                                 hintText: 'Cari Layanan, Kuli & tujuan',
@@ -156,34 +156,314 @@ class MainPage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-                constraints: const BoxConstraints(maxHeight: 240),
-                child: const SkillGridView())
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Stack(
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(32),
+                                  topRight: Radius.circular(32),
+                                  bottomLeft: Radius.circular(32),
+                                  bottomRight: Radius.circular(32),
+                                ),
+                                color: Color(0xff9BB0B3),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black54,
+                                      offset: Offset(0, 4),
+                                      blurRadius: 4)
+                                ],
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(28)),
+                                  child: Image.asset(
+                                    'image/House.png',
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 10.0),
+                              child: Text(
+                                'House',
+                                style: TextStyle(
+                                    fontSize: 20, fontFamily: 'DM Sans'),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 40.0),
+                    child: Stack(
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () {},
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(32),
+                                    topRight: Radius.circular(32),
+                                    bottomLeft: Radius.circular(32),
+                                    bottomRight: Radius.circular(32),
+                                  ),
+                                  color: Color(0xff9BB0B3),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black54,
+                                        offset: Offset(0, 4),
+                                        blurRadius: 4)
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(28)),
+                                    child: Image.asset(
+                                      'image/CloseUp.png',
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  'Yard',
+                                  style: TextStyle(
+                                      fontSize: 20, fontFamily: 'DM Sans'),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 40.0),
+                    child: Stack(
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () {},
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(32),
+                                    topRight: Radius.circular(32),
+                                    bottomLeft: Radius.circular(32),
+                                    bottomRight: Radius.circular(32),
+                                  ),
+                                  color: Color(0xff9BB0B3),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black54,
+                                        offset: Offset(0, 4),
+                                        blurRadius: 4)
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(28)),
+                                    child: Image.asset(
+                                      'image/Group.png',
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  'Renovate',
+                                  style: TextStyle(
+                                      fontSize: 20, fontFamily: 'DM Sans'),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 30.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Stack(
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(32),
+                                  topRight: Radius.circular(32),
+                                  bottomLeft: Radius.circular(32),
+                                  bottomRight: Radius.circular(32),
+                                ),
+                                color: Color(0xff9BB0B3),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black54,
+                                      offset: Offset(0, 4),
+                                      blurRadius: 4)
+                                ],
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(28)),
+                                  child: Image.asset(
+                                    'image/DesignServices.png',
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 10.0),
+                              child: Text(
+                                'Design\n' 'Interior',
+                                style: TextStyle(
+                                    fontSize: 20, fontFamily: 'DM Sans'),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 40.0),
+                    child: Stack(
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () {},
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(32),
+                                    topRight: Radius.circular(32),
+                                    bottomLeft: Radius.circular(32),
+                                    bottomRight: Radius.circular(32),
+                                  ),
+                                  color: Color(0xff9BB0B3),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black54,
+                                        offset: Offset(0, 4),
+                                        blurRadius: 4)
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(28)),
+                                    child: Image.asset(
+                                      'image/MeetingRoom.png',
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  'Room\n' 'Makeover',
+                                  style: TextStyle(
+                                      fontSize: 20, fontFamily: 'DM Sans'),
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 40.0),
+                    child: Stack(
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () {},
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(32),
+                                    topRight: Radius.circular(32),
+                                    bottomLeft: Radius.circular(32),
+                                    bottomRight: Radius.circular(32),
+                                  ),
+                                  color: Color(0xff9BB0B3),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black54,
+                                        offset: Offset(0, 4),
+                                        blurRadius: 4)
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(28)),
+                                    child: Image.asset(
+                                      'image/Trust.png',
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 10.0),
+                                child: Text(
+                                  'House\n' '',
+                                  style: TextStyle(
+                                      fontSize: 20, fontFamily: 'DM Sans'),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
-  }
-}
-
-class SkillGridView extends StatelessWidget {
-  const SkillGridView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-        ),
-        itemCount: 25,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            constraints: const BoxConstraints(maxHeight: 25, maxWidth: 25),
-            child: Card(
-              color: Colors.amber,
-              child: Center(child: Text('$index')),
-            ),
-          );
-        });
   }
 }
