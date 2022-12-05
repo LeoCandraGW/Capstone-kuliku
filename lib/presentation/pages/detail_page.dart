@@ -1,15 +1,28 @@
-import 'package:capstone_kuliku/domain/entities/kuli.dart';
+
+import 'package:capstone_kuliku/domain/entities/kuli_detail.dart';
 import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends StatefulWidget {
   static const routeName = '/detailpage';
   final int id;
   const DetailPage({Key? key, required this.id}) : super(key: key);
 
+  @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+   @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      context.read<DetailKuliBloc>().add(FetchDetailKuli(widget.id));
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,13 +45,13 @@ class DetailPage extends StatelessWidget {
           ),
           backgroundColor: const Color(0xff002f48),
         ),
-        body: BlocBuilder<GetKuliListBloc, KuliBlocState>(
+        body: BlocBuilder<DetailKuliBloc, KuliBlocState>(
             builder: (context, state) {
           if (state is KuliLoading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (state is KuliHasData) {
+          } else if (state is KuliDetailHasData) {
             return SafeArea(
-              child: DetailKuli(kuli :state.kuli[id-1]),
+              child: DetailKuli(kuli: state.kuli),
             );
           } else if (state is KuliHasError) {
             return Center(
@@ -53,7 +66,7 @@ class DetailPage extends StatelessWidget {
 }
 
 class DetailKuli extends StatelessWidget {
-  final Kuli kuli;
+  final KuliDetail kuli;
   const DetailKuli({Key? key, required this.kuli}) : super(key: key);
 
   @override

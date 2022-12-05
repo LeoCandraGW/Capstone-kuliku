@@ -1,8 +1,10 @@
+import 'package:capstone_kuliku/domain/usecases/get_kuli_detail.dart';
 import 'package:capstone_kuliku/domain/usecases/get_kuli_list.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../domain/entities/kuli.dart';
+import '../../domain/entities/kuli_detail.dart';
 part 'kuli_event.dart';
 part 'kuli_state.dart';
 
@@ -17,6 +19,21 @@ class GetKuliListBloc extends Bloc<KuliBlocEvent, KuliBlocState> {
         emit(KuliHasError(failure.message));
       }, (kulidata) {
         emit(KuliHasData(kulidata));
+      });
+    });
+  }
+}
+class DetailKuliBloc extends Bloc<KuliBlocEvent, KuliBlocState> {
+  final GetDetailKuli _getDetailKuli;
+  DetailKuliBloc(this._getDetailKuli) : super(KuliLoading()) {
+    on<FetchDetailKuli>((event, emit) async {
+      final id = event.id;
+      emit(KuliLoading());
+      final result = await _getDetailKuli.execute(id);
+      result.fold((failure) {
+        emit(KuliHasError(failure.message));
+      }, (data) {
+        emit(KuliDetailHasData(data));
       });
     });
   }

@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       providers: [
         //kuli
         BlocProvider(create: (_) => di.locator<GetKuliListBloc>()),
+        BlocProvider(create: (_) => di.locator<DetailKuliBloc>()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

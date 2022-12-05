@@ -6,14 +6,18 @@ import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/io_client.dart';
 
+import 'domain/usecases/get_kuli_detail.dart';
+
 final locator = GetIt.instance;
 
 void init() {
   //kuli
   locator.registerFactory(() => GetKuliListBloc(locator()));
+  locator.registerFactory(() => DetailKuliBloc(locator()));
 
   //use case
   locator.registerLazySingleton(() => GetKuliList(locator()));
+  locator.registerLazySingleton(() => GetDetailKuli(locator()));
 
   // repository
   locator.registerLazySingleton<KuliRepository>(

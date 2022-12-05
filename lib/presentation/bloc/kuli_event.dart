@@ -8,3 +8,10 @@ abstract class KuliBlocEvent extends Equatable {
 }
 
 class FetchKuliList extends KuliBlocEvent{}
+class FetchDetailKuli extends KuliBlocEvent {
+  final int id;
+  const FetchDetailKuli(this.id);
+
+  @override
+  List<Object> get props => [id];
+}
