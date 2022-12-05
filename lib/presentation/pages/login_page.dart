@@ -3,6 +3,8 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:http/http.dart' as http;
 
+import 'home_page.dart';
+
 class LoginPage extends StatefulWidget {
   static const routeName = '/loginpage';
   const LoginPage({super.key});
@@ -208,8 +210,7 @@ class _LoginPageState extends State<LoginPage> {
         headers: {'Accept': 'application/json'});
         progressDialog.hide();
     if (response.statusCode == 200) {
-      Alert(context: context, title: 'Login Berhasil', type: AlertType.success)
-          .show();
+      Navigator.pushNamed(context, HomePage.routeName);
     } else {
       Alert(context: context, title: 'Gagal Login', type: AlertType.error)
           .show();

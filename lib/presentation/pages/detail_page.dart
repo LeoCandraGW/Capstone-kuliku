@@ -51,7 +51,7 @@ class _DetailPageState extends State<DetailPage> {
             return const Center(child: CircularProgressIndicator());
           } else if (state is KuliDetailHasData) {
             return SafeArea(
-              child: DetailKuli(kuli: state.kuli),
+              child: DetailKuli(kuli: state.kulis),
             );
           } else if (state is KuliHasError) {
             return Center(
