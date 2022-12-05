@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:capstone_kuliku/common/utils.dart';
 import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
 import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
