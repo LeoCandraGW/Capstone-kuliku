@@ -56,19 +56,19 @@ class MainPage extends StatelessWidget {
                                       hintStyle: TextStyle(fontSize: 15.0),
                                     ),
                                   ),
-                                )
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 325.0),
+                                  child: IconButton(
+                                    icon: const Icon(
+                                      Icons.message_outlined,
+                                      size: 35,
+                                    ),
+                                    color: Colors.white,
+                                    onPressed: () {},
+                                  ),
+                                ),
                               ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: IconButton(
-                              icon: const Icon(
-                                Icons.message_outlined,
-                                size: 35,
-                              ),
-                              color: Colors.white,
-                              onPressed: () {},
                             ),
                           ),
                         ],
@@ -292,7 +292,7 @@ class MainPage extends StatelessWidget {
                                         ],
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(20.0),
+                                        padding: const EdgeInsets.all(22.0),
                                         child: ClipRRect(
                                           borderRadius: const BorderRadius.all(
                                               Radius.circular(28)),
@@ -475,7 +475,6 @@ class MainPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SignOutButton()
                 ],
               ),
             ),

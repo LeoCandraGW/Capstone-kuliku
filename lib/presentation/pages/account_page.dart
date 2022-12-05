@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterfire_ui/auth.dart';
 
 class AccountPage extends StatelessWidget {
   static const routeName = '/accountpage';
@@ -32,6 +33,7 @@ class AccountPage extends StatelessWidget {
           ),
           body: SingleChildScrollView(
             child: Container(
+              height: MediaQuery.of(context).size.height,
               color: const Color(0xffDEFBFF),
               child: Column(
                 children: [
@@ -221,6 +223,7 @@ class AccountPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const SignOutButton()
                 ],
               ),
             ),
