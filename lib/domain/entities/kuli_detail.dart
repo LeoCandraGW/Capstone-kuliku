@@ -16,7 +16,7 @@ class KuliDetail extends Equatable {
   });
 
   final int id;
-  final String? username;
+  final String username;
   final String email;
   final String password;
   final String skill;
