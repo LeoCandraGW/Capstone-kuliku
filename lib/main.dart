@@ -2,6 +2,7 @@
 import 'package:capstone_kuliku/common/utils.dart';
 import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
 import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
+import 'package:capstone_kuliku/presentation/pages/favorite_page.dart';
 import 'package:capstone_kuliku/presentation/pages/home_page.dart';
 import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
 import 'package:capstone_kuliku/presentation/pages/login_page.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         //kuli
         BlocProvider(create: (_) => di.locator<GetKuliListBloc>()),
         BlocProvider(create: (_) => di.locator<DetailKuliBloc>()),
+        BlocProvider(create: (_) => di.locator<KuliFavoriteBloc>()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SignUpPage(),
+        home: const HomePage(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
@@ -47,6 +49,9 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => const RegisterPage());
             case MainPage.routeName:
               return MaterialPageRoute(builder: (_) => const MainPage());
+            case FavoriteKuliPage.routeName:
+              return MaterialPageRoute(
+                  builder: (_) => const FavoriteKuliPage());
             case DetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(

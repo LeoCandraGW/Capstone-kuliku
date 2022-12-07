@@ -19,11 +19,19 @@ class _DetailPageState extends State<DetailPage> {
     super.initState();
     Future.microtask(() {
       context.read<DetailKuliBloc>().add(FetchDetailKuli(widget.id));
+      context.read<KuliFavoriteBloc>().add(LoadFavoriteKuliStatus(widget.id));
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    var isAddedToFavorite = context.select<KuliFavoriteBloc, bool>((value) {
+      var state = value.state;
+      if (state is LoadFavoriteData) {
+        return state.status;
+      }
+      return false;
+    });
     return Scaffold(
         appBar: AppBar(
           title: Row(
@@ -50,7 +58,10 @@ class _DetailPageState extends State<DetailPage> {
             return const Center(child: CircularProgressIndicator());
           } else if (state is KuliDetailHasData) {
             return SafeArea(
-              child: DetailKuli(kuli: state.kulis),
+              child: DetailKuli(
+                kuli: state.kulis,
+                isAddedFavorite: isAddedToFavorite,
+              ),
             );
           } else if (state is KuliHasError) {
             return Center(
@@ -66,7 +77,10 @@ class _DetailPageState extends State<DetailPage> {
 
 class DetailKuli extends StatelessWidget {
   final KuliDetail kuli;
-  const DetailKuli({Key? key, required this.kuli}) : super(key: key);
+  final bool isAddedFavorite;
+  const DetailKuli(
+      {Key? key, required this.kuli, required this.isAddedFavorite})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +116,61 @@ class DetailKuli extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 28.0),
+                padding: const EdgeInsets.only(top: 8.0),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    if (!isAddedFavorite) {
+                      context
+                          .read<KuliFavoriteBloc>()
+                          .add(AddFavoriteKuli(kuli));
+                    } else {
+                      context
+                          .read<KuliFavoriteBloc>()
+                          .add(RemoveFavoriteKuli(kuli));
+                    }
+                    String message = '';
+
+                    final state =
+                        BlocProvider.of<KuliFavoriteBloc>(context).state;
+
+                    if (state is LoadFavoriteData) {
+                      message = isAddedFavorite
+                          ? KuliFavoriteBloc.favoriteRemoveSuccessMessage
+                          : KuliFavoriteBloc.favoriteAddSuccessMessage;
+                    } else {
+                      message = isAddedFavorite == false
+                          ? KuliFavoriteBloc.favoriteAddSuccessMessage
+                          : KuliFavoriteBloc.favoriteRemoveSuccessMessage;
+                    }
+                    if (message == KuliFavoriteBloc.favoriteAddSuccessMessage ||
+                        message ==
+                            KuliFavoriteBloc.favoriteRemoveSuccessMessage) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(message),
+                      ));
+                      BlocProvider.of<KuliFavoriteBloc>(context)
+                          .add(LoadFavoriteKuliStatus(kuli.id));
+                    } else {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(content: Text(message));
+                          });
+                    }
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      isAddedFavorite
+                          ? Icon(Icons.star)
+                          : Icon(Icons.star_border),
+                      Text(' Favorite')
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 15.0),
                 child: Stack(
                   children: <Widget>[
                     Container(
@@ -283,32 +351,6 @@ class DetailKuli extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class FavoriteButton extends StatefulWidget {
-  const FavoriteButton({Key? key}) : super(key: key);
-
-  @override
-  _FavoriteButtonState createState() => _FavoriteButtonState();
-}
-
-class _FavoriteButtonState extends State<FavoriteButton> {
-  bool isFavorite = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(
-        isFavorite ? Icons.star : Icons.star_border,
-        color: Color(0xFFD2D79F),
-      ),
-      onPressed: () {
-        setState(() {
-          isFavorite = !isFavorite;
-        });
-      },
     );
   }
 }

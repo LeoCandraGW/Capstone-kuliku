@@ -27,6 +27,7 @@ class KuliHasError extends KuliBlocState {
   @override
   List<Object> get props => [message];
 }
+
 class KuliDetailHasData extends KuliBlocState {
   final KuliDetail kulis;
 
@@ -36,4 +37,26 @@ class KuliDetailHasData extends KuliBlocState {
   List<Object> get props => [kulis];
 }
 
+class FavoriteKuliHasData extends KuliBlocState {
+  final List<Kuli> favoriteKuli;
 
+  const FavoriteKuliHasData(this.favoriteKuli);
+
+  @override
+  List<Object> get props => [favoriteKuli];
+}
+
+class FavoriteKuliMessage extends KuliBlocState {
+  final String message;
+
+  const FavoriteKuliMessage(this.message);
+}
+
+class LoadFavoriteData extends KuliBlocState {
+  final bool status;
+
+  const LoadFavoriteData(this.status);
+
+  @override
+  List<Object> get props => [status];
+}
