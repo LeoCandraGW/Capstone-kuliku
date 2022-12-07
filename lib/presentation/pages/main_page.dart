@@ -117,7 +117,7 @@ class _MainPageState extends State<MainPage> {
                       'Kuli Rekomendasi',
                       style: TextStyle(
                         color: Color(0xFF002f48),
-                        fontSize: 25,
+                        fontSize: 20,
                       ),
                     ),
                   ),
@@ -186,7 +186,7 @@ class _MainPageState extends State<MainPage> {
                       'Apa Kebutuhanmu ? ',
                       style: TextStyle(
                         color: Color(0xFF002f48),
-                        fontSize: 25,
+                        fontSize: 20,
                       ),
                     ),
                   ),
