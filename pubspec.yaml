@@ -107,5 +107,11 @@ flutter:
       - family: LeagueSpartan
         fonts:
         - asset: font/LeagueSpartan-VariableFont_wght.ttf
+      - family: DM Sans
+        fonts:
+        - asset: font/DMSans-Regular.ttf
+      - family: Inter
+        fonts:
+        - asset: font/Inter-Regular.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

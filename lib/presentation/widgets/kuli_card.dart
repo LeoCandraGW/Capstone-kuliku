@@ -90,9 +90,9 @@ class KuliCard extends StatelessWidget {
                                     child: Text(
                                       kuli.username.toString(),
                                       style: const TextStyle(
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.w400,
-                                          fontFamily: 'DM Sans'),
+                                          fontSize: 14,
+                                          fontFamily: 'DM Sans',
+                                          fontWeight: FontWeight.w500),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                     ),
@@ -101,9 +101,13 @@ class KuliCard extends StatelessWidget {
                                 Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.only(
-                                        top: 5.0, left: 8),
+                                        top: 2.0, left: 8),
                                     child: Text(
                                       kuli.dailysal.toString(),
+                                      style: const TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'DM Sans',
+                                          fontWeight: FontWeight.w500),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                     ),
@@ -112,9 +116,15 @@ class KuliCard extends StatelessWidget {
                                 Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.only(
-                                        top: 4.0, left: 8),
+                                      top: 4.0,
+                                      left: 8,
+                                    ),
                                     child: Text(
                                       kuli.alamat.toString(),
+                                      style: const TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'DM Sans',
+                                          fontWeight: FontWeight.w500),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                     ),

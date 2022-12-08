@@ -15,12 +15,12 @@ class Kuli extends Equatable {
     required this.alamat,
   });
 
-  Kuli.favorite({
-    required this.id,
-    required this.username,
-    required this.dailysal,
-    required this.image,
-  });
+  Kuli.favorite(
+      {required this.id,
+      required this.username,
+      required this.dailysal,
+      required this.image,
+      required this.alamat});
 
   int? id;
   String? username;

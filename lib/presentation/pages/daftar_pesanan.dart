@@ -1,114 +1,343 @@
+import 'package:capstone_kuliku/domain/entities/kuli_detail.dart';
+import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
 import 'package:capstone_kuliku/presentation/provider/list_kuli.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class DaftarPesanan extends StatelessWidget {
-  final ListKuli kuli;
-  const DaftarPesanan({Key? key, required this.kuli}) : super(key: key);
+class DaftarPesanan extends StatefulWidget {
+  static const routeName = '/daftarpesanan';
+  final int id;
+  const DaftarPesanan({Key? key, required this.id}) : super(key: key);
+
+  @override
+  State<DaftarPesanan> createState() => _DaftarPesananState();
+}
+
+class _DaftarPesananState extends State<DaftarPesanan> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      context.read<DetailKuliBloc>().add(FetchDetailKuli(widget.id));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constrains) {
-        return CheckoutKuli(kuli: kuli);
-      },
-    );
+    return BlocBuilder<DetailKuliBloc, KuliBlocState>(
+        builder: (context, state) {
+      if (state is KuliLoading) {
+        return const Center(child: CircularProgressIndicator());
+      } else if (state is KuliDetailHasData) {
+        return SafeArea(
+          child: CheckoutKuli(kuli: state.kulis),
+        );
+      } else if (state is KuliHasError) {
+        return Center(
+          key: const Key('error_message'),
+          child: Text(state.message),
+        );
+      } else {
+        return const Text('No Data');
+      }
+    });
   }
 }
 
-class CheckoutKuli extends StatelessWidget {
-  final ListKuli kuli;
+class CheckoutKuli extends StatefulWidget {
+  final KuliDetail kuli;
   const CheckoutKuli({Key? key, required this.kuli}) : super(key: key);
+
+  @override
+  State<CheckoutKuli> createState() => _CheckoutKuliState();
+}
+
+class _CheckoutKuliState extends State<CheckoutKuli> {
+  Metode? selectedMetode;
+  List<Metode> metodes = [Metode('Virtual Account'), Metode('Bank Transfer')];
+
+  List<DropdownMenuItem> generateItems(List<Metode> metodes) {
+    List<DropdownMenuItem> items = [];
+    for (var item in metodes) {
+      items.add(
+        DropdownMenuItem(child: Text(item.metode), value: item),
+      );
+    }
+    return items;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFdefbff),
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Stack(
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Center(
+            child: Column(
               children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 70,
-                  color: const Color(0xFF002f48),
+                Stack(
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 70,
+                      color: const Color(0xFF002f48),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Stack(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8, left: 8),
+                      child: Container(
+                        width: 350,
+                        height: 194,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          color: Color(0xff9BB0B3),
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(left: 16),
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.5),
+                                      spreadRadius: 2,
+                                      blurRadius: 7,
+                                      offset: const Offset(
+                                          4, 6), // changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20)),
+                                  child: Image.asset(widget.kuli.image),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20, top: 30),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Text(
+                                        widget.kuli.username,
+                                        style: const TextStyle(
+                                            fontSize: 18,
+                                            fontFamily: 'DM Sans',
+                                            fontWeight: FontWeight.w500),
+                                      )),
+                                  Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Text(
+                                        widget.kuli.dailysal.toString(),
+                                        style: const TextStyle(
+                                            fontSize: 18,
+                                            fontFamily: 'DM Sans',
+                                            fontWeight: FontWeight.w500),
+                                      )),
+                                  Row(
+                                    children: [
+                                      const Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 8, right: 8, top: 0),
+                                          child: Text(
+                                            'Hari',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontFamily: 'DM Sans',
+                                                fontWeight: FontWeight.w500),
+                                          )),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 30),
+                                        child: PlusMinusButtons(
+                                          addQuantity: () {},
+                                          deleteQuantity: () {},
+                                          text: ('1'),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8),
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-              ],
-            ),
-            Stack(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 8),
                   child: Container(
                     width: 350,
-                    height: 200,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
-                      color: Color(0xff9BB0B3),
                     ),
-                    child: Row(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(left: 16),
-                          child: Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(20)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.5),
-                                  spreadRadius: 2,
-                                  blurRadius: 7,
-                                  offset: const Offset(
-                                      4, 6), // changes position of shadow
+                          padding: const EdgeInsets.all(16),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              const Text(
+                                'Payment',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 26,
                                 ),
-                              ],
-                            ),
-                            child: ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(20)),
-                              child: Image.asset(kuli.imageAsset),
-                            ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 8,
+                                      left: 24,
+                                    ),
+                                    child: Text(DateTime.now().toString())),
+                              )
+                            ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 20, top: 50),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          padding: const EdgeInsets.all(20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Padding(
-                                  padding: const EdgeInsets.all(8),
-                                  child: Text(kuli.name)),
-                              Padding(
-                                  padding: const EdgeInsets.all(8),
-                                  child: Text(kuli.dailysal.toString())),
-                              Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 8, right: 8, top: 16),
-                                  child: Text('Hari')),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 100),
-                                child: PlusMinusButtons(
-                                  addQuantity: () {},
-                                  deleteQuantity: () {},
-                                  text: ('1'),
+                              Text(
+                                widget.kuli.username,
+                                style: const TextStyle(
+                                    fontSize: 17,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              Text(
+                                widget.kuli.dailysal,
+                                style: const TextStyle(
+                                    fontSize: 17,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w500),
+                              )
+                            ],
+                          ),
+                        ),
+                        const Divider(
+                          thickness: 3,
+                          height: 2,
+                          color: Colors.black,
+                          indent: 10,
+                          endIndent: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              const Text(
+                                'Total',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              Text(
+                                widget.kuli.dailysal,
+                                style: const TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w500),
+                              )
+                            ],
+                          ),
+                        ),
+                        Center(
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                width: 300,
+                                height: 30,
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(1),
+                                    topRight: Radius.circular(1),
+                                    bottomLeft: Radius.circular(1),
+                                    bottomRight: Radius.circular(1),
+                                  ),
+                                  color: Color(0xffD9D9D9),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black54,
+                                        offset: Offset(0, 4),
+                                        blurRadius: 4)
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 80.0),
+                                  child: DropdownButton(
+                                    hint: const Text(
+                                      'Metode Pembayaran',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    value: selectedMetode,
+                                    items: generateItems(metodes),
+                                    onChanged: (item) {
+                                      setState(() {
+                                        selectedMetode = item;
+                                      });
+                                    },
+                                  ),
                                 ),
                               ),
                             ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Container(
+                            width: 350,
+                            height: 56,
+                            margin: const EdgeInsets.only(top: 30),
+                            child: TextButton(
+                              style: TextButton.styleFrom(
+                                backgroundColor: const Color(0xff25484D),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(46),
+                                ),
+                              ),
+                              onPressed: () {},
+                              child: const Text(
+                                'BAYAR',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'DM Sans'),
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -117,39 +346,7 @@ class CheckoutKuli extends StatelessWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Container(
-                width: 350,
-                height: 400,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Color(0xff9BB0B3),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Payment',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 8,
-                          left: 24,
-                          ),
-                        child: Text(DateTime.now().toString()))
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -177,4 +374,9 @@ class PlusMinusButtons extends StatelessWidget {
       ],
     );
   }
+}
+
+class Metode {
+  String metode;
+  Metode(this.metode);
 }

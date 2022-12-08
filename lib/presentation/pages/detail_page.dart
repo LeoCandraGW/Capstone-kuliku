@@ -1,5 +1,6 @@
 import 'package:capstone_kuliku/domain/entities/kuli_detail.dart';
 import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
+import 'package:capstone_kuliku/presentation/pages/daftar_pesanan.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -189,11 +190,13 @@ class DetailKuli extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top: 18.0, left: 20),
+                            padding: const EdgeInsets.only(top: 10.0, left: 20),
                             child: Text(
                               kuli.username.toString(),
                               style: const TextStyle(
-                                  fontSize: 20.0, fontFamily: 'DM Sans'),
+                                  fontSize: 20,
+                                  fontFamily: 'DM Sans',
+                                  fontWeight: FontWeight.w700),
                             ),
                           ),
                           Padding(
@@ -201,7 +204,9 @@ class DetailKuli extends StatelessWidget {
                             child: Text(
                               kuli.alamat,
                               style: const TextStyle(
-                                  fontSize: 15.0, fontFamily: 'Inter'),
+                                  fontSize: 20,
+                                  fontFamily: 'DM Sans',
+                                  fontWeight: FontWeight.w700),
                             ),
                           )
                         ],
@@ -231,9 +236,9 @@ class DetailKuli extends StatelessWidget {
                     child: Text(
                       kuli.skill,
                       style: const TextStyle(
-                        fontSize: 20.0,
-                        fontFamily: 'Inter',
-                      ),
+                          fontSize: 18,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
@@ -260,9 +265,9 @@ class DetailKuli extends StatelessWidget {
                     child: Text(
                       kuli.deskripsi,
                       style: const TextStyle(
-                        fontSize: 15.0,
-                        fontFamily: 'Inter',
-                      ),
+                          fontSize: 14,
+                          fontFamily: 'DM Sans',
+                          fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
@@ -312,10 +317,9 @@ class DetailKuli extends StatelessWidget {
                         child: Text(
                           kuli.dailysal.toString(),
                           style: const TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'DM Sans',
-                          ),
+                              fontSize: 14,
+                              fontFamily: 'DM Sans',
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -335,7 +339,10 @@ class DetailKuli extends StatelessWidget {
                         borderRadius: BorderRadius.circular(46),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, DaftarPesanan.routeName,
+                          arguments: kuli.id);
+                    },
                     child: const Text(
                       'CHECKOUT',
                       style: TextStyle(

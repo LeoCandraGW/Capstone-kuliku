@@ -21,7 +21,7 @@ class DatabaseHelper {
 
   Future<Database> _initDb() async {
     final path = await getDatabasesPath();
-    final databasePath = '$path/kuliku2.db';
+    final databasePath = '$path/kuliku4.db';
 
     var db = await openDatabase(databasePath, version: 1, onCreate: _onCreate);
     return db;
@@ -33,7 +33,8 @@ class DatabaseHelper {
         id INTEGER PRIMARY KEY,
         username TEXT,
         dailysal TEXT,
-        image TEXT
+        image TEXT,
+        alamat TEXT
       );
     ''');
   }

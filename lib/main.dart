@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:capstone_kuliku/common/utils.dart';
 import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
+import 'package:capstone_kuliku/presentation/pages/daftar_pesanan.dart';
 import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
 import 'package:capstone_kuliku/presentation/pages/favorite_page.dart';
 import 'package:capstone_kuliku/presentation/pages/home_page.dart';
@@ -56,6 +57,12 @@ class MyApp extends StatelessWidget {
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => DetailPage(id: id),
+                settings: settings,
+              );
+            case DaftarPesanan.routeName:
+              final id = settings.arguments as int;
+              return MaterialPageRoute(
+                builder: (_) => DaftarPesanan(id: id),
                 settings: settings,
               );
             default:

@@ -7,31 +7,35 @@ class KuliTable extends Equatable {
   final String? username;
   final String? dailysal;
   final String image;
+  final String? alamat;
 
   KuliTable(
       {required this.id,
       required this.dailysal,
       required this.image,
-      required this.username});
+      required this.username,
+      required this.alamat});
 
   factory KuliTable.fromEntity(KuliDetail kuli) => KuliTable(
       id: kuli.id,
       username: kuli.username,
       image: kuli.image,
-      dailysal: kuli.dailysal);
+      dailysal: kuli.dailysal,
+      alamat: kuli.alamat);
 
   factory KuliTable.fromMap(Map<String, dynamic> map) => KuliTable(
-        id: map['id'],
-        username: map['username'],
-        image: map['image'],
-        dailysal: map['dailysal'],
-      );
+      id: map['id'],
+      username: map['username'],
+      image: map['image'],
+      dailysal: map['dailysal'],
+      alamat: map['alamat']);
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'username': username,
         'image': image,
         'dailysal': dailysal,
+        'alamat': alamat,
       };
 
   Kuli toEntity() => Kuli.favorite(
@@ -39,8 +43,9 @@ class KuliTable extends Equatable {
         dailysal: dailysal,
         username: username,
         image: image,
+        alamat: alamat,
       );
 
   @override
-  List<Object?> get props => [id, dailysal, username, image];
+  List<Object?> get props => [id, dailysal, username, image, alamat];
 }
