@@ -33,7 +33,7 @@ class _RegisterPageState extends State<RegisterPage> {
                    width: 100,
                 height: 100,
                     child:
-                          Expanded(child: Image.asset('image/logo.png'))
+                          SizedBox(child: Image.asset('image/logo.png'))
                   ),
                 ),
               ),
@@ -52,7 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: SizedBox(
               width: 300,
               height: 70,
-              child: Expanded(
+              child: SizedBox(
                 child: Text(
                   'Create your account and start your building with us ',
                   textAlign: TextAlign.center,
@@ -84,7 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Padding(
                         padding: EdgeInsets.only(
                             left: 8.0, top: 8, right: 8, bottom: 5),
-                        child: Expanded(
+                        child: SizedBox(
                           child: TextField(
                             controller: txtUsername,
                             decoration: InputDecoration(
@@ -115,7 +115,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Padding(
                         padding: EdgeInsets.only(
                             left: 8.0, top: 8, right: 8, bottom: 5),
-                        child: Expanded(
+                        child: SizedBox(
                           child: TextField(
                             controller: txtEmail,
                             decoration: InputDecoration(
@@ -146,8 +146,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Padding(
                         padding: EdgeInsets.only(
                             left: 8.0, top: 8, right: 8, bottom: 5),
-                        child: Expanded(
+                        child: SizedBox(
                           child: TextField(
+                            obscureText: true,
+                            enableSuggestions: false,
+                            autocorrect: false,
                             controller: txtPassword,
                             decoration: InputDecoration(
                                 hintText: 'Password', prefixIcon: Icon(Icons.lock)),
@@ -174,7 +177,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           onPressed: () {
                             _doRegister();
                           },
-                          child: const Expanded(
+                          child: const SizedBox(
                             child:  Text(
                               'REGISTER',
                               style: TextStyle(

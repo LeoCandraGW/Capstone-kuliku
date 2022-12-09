@@ -1,9 +1,11 @@
 // @dart=2.9
 import 'package:capstone_kuliku/common/utils.dart';
-import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
+import 'package:capstone_kuliku/presentation/bloc/carousel_bloc/carousel_bloc.dart';
+import 'package:capstone_kuliku/presentation/bloc/kuli_bloc/kuli_bloc.dart';
 import 'package:capstone_kuliku/presentation/pages/daftar_pesanan.dart';
 import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
 import 'package:capstone_kuliku/presentation/pages/home_page.dart';
+import 'package:capstone_kuliku/presentation/pages/invoice_page.dart';
 import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
 import 'package:capstone_kuliku/presentation/pages/list_kuli_skill_page.dart';
 import 'package:capstone_kuliku/presentation/pages/login_page.dart';
@@ -29,6 +31,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => di.locator<GetKuliListBloc>()),
         BlocProvider(create: (_) => di.locator<DetailKuliBloc>()),
         BlocProvider(create: (_) => di.locator<GetKuliSkillListBloc>()),
+        BlocProvider(create: (_) => di.locator<KuliFavoriteBloc>()),
+        
+        //carousel
+        BlocProvider(create: (_) => di.locator<GetCarouselListBloc>()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -50,10 +56,14 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => const RegisterPage());
             case MainPage.routeName:
               return MaterialPageRoute(builder: (_) => const MainPage());
+            case InvoicePage.routeName:
+              return MaterialPageRoute(builder: (_) => const InvoicePage());
             case ListKuliSkillPage.routeName:
               final skill = settings.arguments as String;
               return MaterialPageRoute(
-                builder: (_) => ListKuliSkillPage(skill: skill,),
+                builder: (_) => ListKuliSkillPage(
+                  skill: skill,
+                ),
                 settings: settings,
               );
             case DaftarPesanan.routeName:

@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: SizedBox(
                   width: 420,
                   height: 150,
-                  child: Expanded(child: Image.asset('image/logo.png')),
+                  child: SizedBox(child: Image.asset('image/logo.png')),
                 ),
               ),
               Column(
@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: SizedBox(
                       child: Stack(children: const <Widget>[
                         Positioned(
-                          child: Expanded(
+                          child: SizedBox(
                             child: Text(
                               'Welcome Back',
                               textAlign: TextAlign.center,
@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.only(top: 12.0),
                     child: Stack(children: const <Widget>[
                       Positioned(
-                        child: Expanded(
+                        child: SizedBox(
                           child: Text(
                             'Login to Your Account',
                             textAlign: TextAlign.center,
@@ -95,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Padding(
                         padding: const EdgeInsets.only(
                             left: 8.0, top: 8, right: 8, bottom: 5),
-                        child: Expanded(
+                        child: SizedBox(
                           child: TextField(
                             controller: txtUsername,
                             decoration: const InputDecoration(
@@ -126,12 +126,16 @@ class _LoginPageState extends State<LoginPage> {
                       child: Padding(
                         padding: const EdgeInsets.only(
                             left: 8.0, top: 8, right: 8, bottom: 5),
-                        child: Expanded(
+                        child: SizedBox(
                           child: TextField(
+                            obscureText: true,
+                            enableSuggestions: false,
+                            autocorrect: false,
                             controller: txtPassword,
                             decoration: const InputDecoration(
-                                hintText: 'Password',
-                                prefixIcon: Icon(Icons.lock)),
+                              hintText: 'Password',
+                              prefixIcon: Icon(Icons.lock),
+                            ),
                           ),
                         ),
                       ),
@@ -144,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                   top: 20.0,
                   left: 160,
                 ),
-                child: Expanded(
+                child: SizedBox(
                   child: Text(
                     'Forget Password ?',
                     textAlign: TextAlign.right,
@@ -171,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     _doLogin();
                   },
-                  child: const Expanded(
+                  child: const SizedBox(
                     child: Text(
                       'LOGIN',
                       style: TextStyle(

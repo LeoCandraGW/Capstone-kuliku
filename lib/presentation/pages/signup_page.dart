@@ -12,7 +12,7 @@ class SignUpPage extends StatelessWidget {
         resizeToAvoidBottomInset: true,
         body: Stack(
           children: <Widget>[
-            Expanded(
+            SizedBox(
               child: Image.asset(
                 'image/signup.jpg',
                 fit: BoxFit.cover,
@@ -25,7 +25,7 @@ class SignUpPage extends StatelessWidget {
               children: <Widget>[
                 Container(
                   alignment: Alignment.topRight,
-                  child: Expanded(
+                  child: SizedBox(
                     child: Image.asset(
                       'image/logo.png',
                       height: 135,
@@ -37,7 +37,7 @@ class SignUpPage extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   width: 319,
                   height: 182,
-                  child: const Expanded(
+                  child: const SizedBox(
                     child: Text(
                       'Build Your Dream House And Make Over Your Room',
                       textAlign: TextAlign.right,
@@ -53,7 +53,7 @@ class SignUpPage extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   width: 319,
                   height: 64,
-                  child: const Expanded(
+                  child: const SizedBox(
                     child: Text(
                       'find your best kuli and start your first brick with us!',
                       textAlign: TextAlign.right,
@@ -68,7 +68,7 @@ class SignUpPage extends StatelessWidget {
                   width: 286,
                   height: 56,
                   margin: const EdgeInsets.only(top: 150),
-                  child: Expanded(
+                  child: SizedBox(
                     child: TextButton(
                       style: TextButton.styleFrom(
                         backgroundColor: const Color(0xffBADCFF),
@@ -79,7 +79,7 @@ class SignUpPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, RegisterPage.routeName);
                       },
-                      child: const Expanded(
+                      child: const SizedBox(
                         child: Text(
                           'Sign Up',
                           style: TextStyle(

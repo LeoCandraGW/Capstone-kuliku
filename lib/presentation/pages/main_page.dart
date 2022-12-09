@@ -1,4 +1,5 @@
-import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
+import 'package:capstone_kuliku/presentation/bloc/carousel_bloc/carousel_bloc.dart';
+import 'package:capstone_kuliku/presentation/bloc/kuli_bloc/kuli_bloc.dart';
 import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
 import 'package:capstone_kuliku/presentation/pages/list_kuli_skill_page.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class _MainPageState extends State<MainPage> {
                           const SizedBox(
                             width: 300,
                             height: 40,
-                            child: Expanded(
+                            child: SizedBox(
                               child: TextField(
                                 decoration: InputDecoration(
                                   hintText: 'Cari Layanan, Kuli & tujuan',
@@ -74,7 +75,7 @@ class _MainPageState extends State<MainPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Expanded(
+                      child: SizedBox(
                         child: IconButton(
                           icon: const Icon(
                             Icons.message_outlined,
@@ -93,25 +94,40 @@ class _MainPageState extends State<MainPage> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
-                  child: Expanded(
+                  child: SizedBox(
                     child: CarouselSlider(
                       options: CarouselOptions(
                         autoPlay: true,
                         autoPlayInterval: const Duration(seconds: 3),
                       ),
                       items: [1, 2, 3, 4].map((i) {
-                        return Builder(builder: (BuildContext context) {
-                          return Container(
-                            width: MediaQuery.of(context).size.width,
-                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                            decoration:
-                                const BoxDecoration(color: Color(0xFF002f48)),
-                            child: Text(
-                              'text $i',
-                              style: const TextStyle(
-                                  fontSize: 16.0, color: Colors.white),
-                            ),
-                          );
+                        return BlocBuilder<GetCarouselListBloc, CarouselBlocState>(
+                            builder: (context, state) {
+                          if (state is CarouselLoading) {
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          } else if (state is CarouselHasData) {
+                            return ListView.builder(
+                              itemBuilder: (context, index) {
+                                final carousel = state.carousel[index];
+                                return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                        decoration:
+                            const BoxDecoration(color: Color(0xFF002f48)),
+                        
+                      );
+                              },
+                              itemCount: state.carousel.length,
+                            );
+                          } else if (state is CarouselHasError) {
+                            return Center(
+                              key: const Key('error_message'),
+                              child: Text(state.message),
+                            );
+                          } else {
+                            return const Text('No Data');
+                          }
                         });
                       }).toList(),
                     ),
@@ -122,7 +138,7 @@ class _MainPageState extends State<MainPage> {
                   child: SizedBox(
                     child: Container(
                       alignment: Alignment.centerLeft,
-                      child: const Expanded(
+                      child: const SizedBox(
                         child: Text(
                           'Kuli Rekomendasi',
                           style: TextStyle(
@@ -161,7 +177,7 @@ class _MainPageState extends State<MainPage> {
                                           left: 8, right: 8),
                                       child: SizedBox(
                                         height: 65,
-                                        child: Expanded(
+                                        child: SizedBox(
                                           child: ClipRRect(
                                             borderRadius:
                                                 const BorderRadius.all(
@@ -173,7 +189,7 @@ class _MainPageState extends State<MainPage> {
                                     ),
                                     SizedBox(
                                       height: 25,
-                                      child: Expanded(
+                                      child: SizedBox(
                                           child:
                                               Text(kuli.username.toString())),
                                     ),
@@ -198,7 +214,7 @@ class _MainPageState extends State<MainPage> {
                   child: SizedBox(
                     child: Container(
                       alignment: Alignment.centerLeft,
-                      child: const Expanded(
+                      child: const SizedBox(
                         child: Text(
                           'Apa Kebutuhanmu ? ',
                           style: TextStyle(
@@ -241,7 +257,7 @@ class _MainPageState extends State<MainPage> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(20.0),
-                                    child: Expanded(
+                                    child: SizedBox(
                                       child: ClipRRect(
                                         borderRadius: const BorderRadius.all(
                                             Radius.circular(28)),
@@ -254,7 +270,7 @@ class _MainPageState extends State<MainPage> {
                                 ),
                                 const Padding(
                                   padding: EdgeInsets.only(top: 10.0),
-                                  child: Expanded(
+                                  child: SizedBox(
                                     child: Text(
                                       'House',
                                       style: TextStyle(
@@ -274,10 +290,10 @@ class _MainPageState extends State<MainPage> {
                             InkWell(
                               onTap: () {
                                 Navigator.pushNamed(
-                                context,
-                                ListKuliSkillPage.routeName,
-                                arguments: 'yard',
-                              );
+                                  context,
+                                  ListKuliSkillPage.routeName,
+                                  arguments: 'yard',
+                                );
                               },
                               child: Column(
                                 children: [
@@ -299,7 +315,7 @@ class _MainPageState extends State<MainPage> {
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(20.0),
-                                      child: Expanded(
+                                      child: SizedBox(
                                         child: ClipRRect(
                                           borderRadius: const BorderRadius.all(
                                               Radius.circular(28)),
@@ -331,10 +347,10 @@ class _MainPageState extends State<MainPage> {
                             InkWell(
                               onTap: () {
                                 Navigator.pushNamed(
-                                context,
-                                ListKuliSkillPage.routeName,
-                                arguments: 'renovate',
-                              );
+                                  context,
+                                  ListKuliSkillPage.routeName,
+                                  arguments: 'renovate',
+                                );
                               },
                               child: Column(
                                 children: [
@@ -356,7 +372,7 @@ class _MainPageState extends State<MainPage> {
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(22.0),
-                                      child: Expanded(
+                                      child: SizedBox(
                                         child: ClipRRect(
                                           borderRadius: const BorderRadius.all(
                                               Radius.circular(28)),
@@ -419,7 +435,7 @@ class _MainPageState extends State<MainPage> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(20.0),
-                                    child: Expanded(
+                                    child: SizedBox(
                                       child: ClipRRect(
                                         borderRadius: const BorderRadius.all(
                                             Radius.circular(28)),
@@ -450,10 +466,10 @@ class _MainPageState extends State<MainPage> {
                             InkWell(
                               onTap: () {
                                 Navigator.pushNamed(
-                                context,
-                                ListKuliSkillPage.routeName,
-                                arguments: 'makeover',
-                              );
+                                  context,
+                                  ListKuliSkillPage.routeName,
+                                  arguments: 'makeover',
+                                );
                               },
                               child: Column(
                                 children: [
@@ -475,7 +491,7 @@ class _MainPageState extends State<MainPage> {
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(20.0),
-                                      child: Expanded(
+                                      child: SizedBox(
                                         child: ClipRRect(
                                           borderRadius: const BorderRadius.all(
                                               Radius.circular(28)),
@@ -527,7 +543,7 @@ class _MainPageState extends State<MainPage> {
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(20.0),
-                                      child: Expanded(
+                                      child: SizedBox(
                                         child: ClipRRect(
                                           borderRadius: const BorderRadius.all(
                                               Radius.circular(28)),
