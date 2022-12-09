@@ -42,7 +42,7 @@ class _RegisterPageState extends State<RegisterPage> {
               style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'League Spartan',
-                  fontSize: 46,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
                   height: 1),
             ),
@@ -57,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'League Spartan',
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w300,
                       height: 1),
                 ),
@@ -69,7 +69,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: <Widget>[
                   Container(
                     width: 304,
-                    height: 60,
+                    height: 50,
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(12),
@@ -98,7 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: <Widget>[
                   Container(
                     width: 304,
-                    height: 60,
+                    height: 50,
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(12),
@@ -127,7 +127,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: <Widget>[
                   Container(
                     width: 304,
-                    height: 60,
+                    height: 50,
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(12),
@@ -174,42 +174,43 @@ class _RegisterPageState extends State<RegisterPage> {
             //           ),
             //         ),
             //       ),
-                  
+
             //     ],
             //   ),
             // ),
             Padding(
-                    padding: const EdgeInsets.only(top: 40.0),
-                    child: Container(
-                      width: 304,
-                      height: 56,
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          backgroundColor: const Color(0xff35516E),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(46),
-                          ),
-                        ),
-                        onPressed: () {
-                          _doRegister();
-                        },
-                        child: const Text(
-                          'REGISTER',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'DM Sans'),
-                        ),
-                      ),
+              padding: const EdgeInsets.only(top: 40.0),
+              child: Container(
+                width: 304,
+                height: 56,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: const Color(0xff35516E),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(46),
                     ),
                   ),
+                  onPressed: () {
+                    _doRegister();
+                  },
+                  child: const Text(
+                    'REGISTER',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'DM Sans'),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-  Future _doRegister() async{
+
+  Future _doRegister() async {
     if (txtUsername.text.isEmpty || txtPassword.text.isEmpty) {
       Alert(context: context, title: "Masukan Data", type: AlertType.error)
           .show();
@@ -218,11 +219,15 @@ class _RegisterPageState extends State<RegisterPage> {
     ProgressDialog progressDialog = ProgressDialog(context);
     progressDialog.style(message: 'Loading...');
     progressDialog.show();
-    final response = await http.post(
-        Uri.parse('http://10.0.2.2:8000/api/register'),
-        body: {'username': txtUsername.text,'email': txtEmail.text, 'password': txtPassword.text},
-        headers: {'Accept': 'application/json'});
-        progressDialog.hide();
+    final response =
+        await http.post(Uri.parse('http://10.0.2.2:8000/api/register'), body: {
+      'username': txtUsername.text,
+      'email': txtEmail.text,
+      'password': txtPassword.text
+    }, headers: {
+      'Accept': 'application/json'
+    });
+    progressDialog.hide();
     if (response.statusCode == 200) {
       Navigator.pushNamed(context, HomePage.routeName);
     } else {

@@ -5,6 +5,7 @@ import 'package:capstone_kuliku/presentation/pages/daftar_pesanan.dart';
 import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
 import 'package:capstone_kuliku/presentation/pages/favorite_page.dart';
 import 'package:capstone_kuliku/presentation/pages/home_page.dart';
+import 'package:capstone_kuliku/presentation/pages/invoice_page.dart';
 import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
 import 'package:capstone_kuliku/presentation/pages/login_page.dart';
 import 'package:capstone_kuliku/presentation/pages/main_page.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomePage(),
+        home: const SignUpPage(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
@@ -50,6 +51,8 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => const RegisterPage());
             case MainPage.routeName:
               return MaterialPageRoute(builder: (_) => const MainPage());
+            case InvoicePage.routeName:
+              return MaterialPageRoute(builder: (_) => const InvoicePage());
             case FavoriteKuliPage.routeName:
               return MaterialPageRoute(
                   builder: (_) => const FavoriteKuliPage());

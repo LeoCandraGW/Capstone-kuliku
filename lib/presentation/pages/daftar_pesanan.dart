@@ -1,5 +1,6 @@
 import 'package:capstone_kuliku/domain/entities/kuli_detail.dart';
 import 'package:capstone_kuliku/presentation/bloc/kuli_bloc.dart';
+import 'package:capstone_kuliku/presentation/pages/invoice_page.dart';
 import 'package:capstone_kuliku/presentation/provider/list_kuli.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -135,7 +136,7 @@ class _CheckoutKuliState extends State<CheckoutKuli> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 20, top: 30),
+                              padding: const EdgeInsets.only(left: 20, top: 40),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
@@ -157,29 +158,16 @@ class _CheckoutKuliState extends State<CheckoutKuli> {
                                             fontFamily: 'DM Sans',
                                             fontWeight: FontWeight.w500),
                                       )),
-                                  Row(
-                                    children: [
-                                      const Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 8, right: 8, top: 0),
-                                          child: Text(
-                                            'Hari',
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontFamily: 'DM Sans',
-                                                fontWeight: FontWeight.w500),
-                                          )),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 30),
-                                        child: PlusMinusButtons(
-                                          addQuantity: () {},
-                                          deleteQuantity: () {},
-                                          text: ('1'),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                  Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 8, right: 8, top: 2),
+                                      child: Text(
+                                        widget.kuli.skill,
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontFamily: 'DM Sans',
+                                            fontWeight: FontWeight.w500),
+                                      )),
                                 ],
                               ),
                             ),
@@ -319,7 +307,7 @@ class _CheckoutKuliState extends State<CheckoutKuli> {
                           padding: const EdgeInsets.all(2.0),
                           child: Container(
                             width: 350,
-                            height: 56,
+                            height: 54,
                             margin: const EdgeInsets.only(top: 30),
                             child: TextButton(
                               style: TextButton.styleFrom(
@@ -328,12 +316,17 @@ class _CheckoutKuliState extends State<CheckoutKuli> {
                                   borderRadius: BorderRadius.circular(46),
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  InvoicePage.routeName,
+                                );
+                              },
                               child: const Text(
                                 'BAYAR',
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 24,
+                                    fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'DM Sans'),
                               ),

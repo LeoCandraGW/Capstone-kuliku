@@ -11,7 +11,7 @@ class SignUpPage extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       body: Stack(
         children: <Widget>[
-          Expanded(
+          Container(
             child: Image.asset(
               'image/signup.jpg',
               fit: BoxFit.cover,

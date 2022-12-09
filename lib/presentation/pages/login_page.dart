@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 85.0),
-                  child: Expanded(
+                  child: Container(
                     child: Stack(children: const <Widget>[
                       Positioned(
                         child: Text(
@@ -208,7 +208,7 @@ class _LoginPageState extends State<LoginPage> {
         Uri.parse('http://10.0.2.2:8000/api/login'),
         body: {'email': txtUsername.text, 'password': txtPassword.text},
         headers: {'Accept': 'application/json'});
-        progressDialog.hide();
+    progressDialog.hide();
     if (response.statusCode == 200) {
       Navigator.pushNamed(context, HomePage.routeName);
     } else {
