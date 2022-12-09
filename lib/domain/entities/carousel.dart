@@ -6,7 +6,7 @@ class Carousel extends Equatable {
     required this.image,
   });
   int id;
-  String? image;
+  String image;
 
   @override
   List<Object?> get props => [id, image];

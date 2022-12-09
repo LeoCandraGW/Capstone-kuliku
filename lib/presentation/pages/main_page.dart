@@ -94,44 +94,36 @@ class _MainPageState extends State<MainPage> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
-                  child: SizedBox(
-                    child: CarouselSlider(
-                      options: CarouselOptions(
-                        autoPlay: true,
-                        autoPlayInterval: const Duration(seconds: 3),
-                      ),
-                      items: [1, 2, 3, 4].map((i) {
-                        return BlocBuilder<GetCarouselListBloc, CarouselBlocState>(
-                            builder: (context, state) {
-                          if (state is CarouselLoading) {
-                            return const Center(
-                                child: CircularProgressIndicator());
-                          } else if (state is CarouselHasData) {
-                            return ListView.builder(
-                              itemBuilder: (context, index) {
-                                final carousel = state.carousel[index];
-                                return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                        decoration:
-                            const BoxDecoration(color: Color(0xFF002f48)),
-                        
+                  child: SizedBox(child:
+                      BlocBuilder<GetKuliListBloc, KuliBlocState>(
+                          builder: (context, state) {
+                    if (state is KuliLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (state is KuliHasData) {
+                      return CarouselSlider.builder(
+                        itemCount: state.kuli.length,
+                        itemBuilder: (context, index, realindx) {
+                          final kuli = state.kuli[index];
+                          return Container(
+                            child: Center(
+                                child: Image.asset(kuli.image.toString(),
+                                    fit: BoxFit.cover, width: 1000)),
+                          );
+                        },
+                        options: CarouselOptions(
+                          autoPlay: true,
+                          autoPlayInterval: const Duration(seconds: 3),
+                        ),
                       );
-                              },
-                              itemCount: state.carousel.length,
-                            );
-                          } else if (state is CarouselHasError) {
-                            return Center(
-                              key: const Key('error_message'),
-                              child: Text(state.message),
-                            );
-                          } else {
-                            return const Text('No Data');
-                          }
-                        });
-                      }).toList(),
-                    ),
-                  ),
+                    } else if (state is KuliHasError) {
+                      return Center(
+                        key: const Key('error_message'),
+                        child: Text(state.message),
+                      );
+                    } else {
+                      return const Text('No Data');
+                    }
+                  })),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
