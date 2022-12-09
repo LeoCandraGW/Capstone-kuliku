@@ -87,14 +87,16 @@ class AccountPage extends StatelessWidget {
                       child: Row(
                         children: const [
                           Padding(
-                            padding: EdgeInsets.only(left: 85.0),
-                            child: Text(
-                              'Daftar Kuli Gratis',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'DM Sans'),
+                            padding: EdgeInsets.only(left: 80.0),
+                            child: SizedBox(
+                              child: Text(
+                                'Daftar Kuli Gratis',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'DM Sans'),
+                              ),
                             ),
                           ),
                           Padding(

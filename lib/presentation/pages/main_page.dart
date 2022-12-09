@@ -514,7 +514,13 @@ class _MainPageState extends State<MainPage> {
                         child: Stack(
                           children: <Widget>[
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.pushNamed(
+                                context,
+                                ListKuliSkillPage.routeName,
+                                arguments: 'homecare',
+                              );
+                              },
                               child: Column(
                                 children: [
                                   Container(

@@ -4,6 +4,7 @@ import 'package:capstone_kuliku/presentation/bloc/carousel_bloc/carousel_bloc.da
 import 'package:capstone_kuliku/presentation/bloc/kuli_bloc/kuli_bloc.dart';
 import 'package:capstone_kuliku/presentation/pages/daftar_pesanan.dart';
 import 'package:capstone_kuliku/presentation/pages/detail_page.dart';
+import 'package:capstone_kuliku/presentation/pages/favorite_kuli_page.dart';
 import 'package:capstone_kuliku/presentation/pages/home_page.dart';
 import 'package:capstone_kuliku/presentation/pages/invoice_page.dart';
 import 'package:capstone_kuliku/presentation/pages/list_kuli_page.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => di.locator<DetailKuliBloc>()),
         BlocProvider(create: (_) => di.locator<GetKuliSkillListBloc>()),
         BlocProvider(create: (_) => di.locator<KuliFavoriteBloc>()),
-        
+
         //carousel
         BlocProvider(create: (_) => di.locator<GetCarouselListBloc>()),
       ],
@@ -58,6 +59,9 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => const MainPage());
             case InvoicePage.routeName:
               return MaterialPageRoute(builder: (_) => const InvoicePage());
+            case FavoriteKuliPage.routeName:
+              return MaterialPageRoute(
+                  builder: (_) => const FavoriteKuliPage());
             case ListKuliSkillPage.routeName:
               final skill = settings.arguments as String;
               return MaterialPageRoute(
